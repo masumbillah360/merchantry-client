@@ -80,14 +80,14 @@ const Banner = () => {
               <div className="col-span-12 md:col-span-12">
                 <div className="flex justify-center items-center h-full flex-col px-4">
                   <div className="text-black">
-                    <div className="grid grid-cols-3">
-                      <div className="rounded-full">
+                    <div className="grid grid-cols-1">
+                      {/* <div className="rounded-full">
                         <img
                           src="https://placeimg.com/1000/800/arch"
                           alt=""
                           className="w-48 h-48 mx-auto animate-bounce rounded-full hover:animate-spin"
                         />
-                      </div>
+                      </div> */}
                       <div className="my-4">
                         <h1 className="text-5xl md:text-7xl font-extrabold text-blue-500 text-center mb-2">
                           Merchentry
@@ -101,37 +101,31 @@ const Banner = () => {
                           minus voluptates
                         </p>
                       </div>
-                      <div className="rounded-full">
+                      {/* <div className="rounded-full hidden lg:block">
                         <img
                           src="https://placeimg.com/1000/800/arch"
                           alt=""
                           className="w-48 h-48 mx-auto animate-bounce rounded-full"
                         />
-                      </div>
+                      </div> */}
                     </div>
-                    <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-                      <div className="card bg-base-100 shadow-xl cursor-pointer hover:animate-bounce">
-                        <div className="card-body">
-                          <h2 className="card-title">Card title!</h2>
-                          <p>
-                            If a dog chews shoes whose shoes does he choose?
-                          </p>
+                    <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                      <div className="card border shadow-xl">
+                        <div className="card-body items-center text-center">
+                          <h2 className="card-title">Lenevo</h2>
+                          <p>We are using cookies for no reason.</p>
                         </div>
                       </div>
-                      <div className="card bg-base-100 shadow-xl">
-                        <div className="card-body">
-                          <h2 className="card-title">Card title!</h2>
-                          <p>
-                            If a dog chews shoes whose shoes does he choose?
-                          </p>
+                      <div className="card border shadow-xl">
+                        <div className="card-body items-center text-center">
+                          <h2 className="card-title">Dell</h2>
+                          <p>We are using cookies for no reason.</p>
                         </div>
                       </div>
-                      <div className="card bg-base-100 shadow-xl">
-                        <div className="card-body">
-                          <h2 className="card-title">Card title!</h2>
-                          <p>
-                            If a dog chews shoes whose shoes does he choose?
-                          </p>
+                      <div className="card border shadow-xl">
+                        <div className="card-body items-center text-center">
+                          <h2 className="card-title">HP</h2>
+                          <p>We are using cookies for no reason.</p>
                         </div>
                       </div>
                     </div>
