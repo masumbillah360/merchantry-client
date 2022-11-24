@@ -5,7 +5,7 @@ import CategoryPage from "../Pages/CategoryPage/CategoryPage";
 import DashHome from "../Pages/Dashboard/DashHome/DashHome";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
-import MyOrders from "../Pages/MyOrders/MyOrders";
+import MyWishlist from "../Pages/MyWishlist/MyWishlist";
 import ProductDetails from "../Pages/Shared/ProductDetails/ProductDetails";
 import Signup from "../Pages/Signup/Signup";
 
@@ -45,7 +45,7 @@ const router = createBrowserRouter([
     element: <Dashboard />,
     children: [
       { path: "/dashboard", element: <DashHome /> },
-      { path: "/dashboard/myorders", element: <MyOrders /> },
+      { path: "/dashboard/mywishlist", element: <MyWishlist /> },
     ],
   },
 ]);

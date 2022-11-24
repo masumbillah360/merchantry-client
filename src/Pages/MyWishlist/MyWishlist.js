@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import OrderRow from "./OrderRow";
+import WishlistRow from "./WishlistRow";
 
 const MyOrders = () => {
   const { data: allOrders = [], isLoading } = useQuery({
@@ -27,7 +27,7 @@ const MyOrders = () => {
         </thead>
         <tbody>
           {allOrders.map((order) => (
-            <OrderRow key={order._id} order={order} />
+            <WishlistRow key={order._id} order={order} />
           ))}
         </tbody>
       </table>

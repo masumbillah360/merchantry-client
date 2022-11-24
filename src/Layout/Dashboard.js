@@ -10,10 +10,10 @@ const Dashboard = () => {
         <div className="col-span-4">
           <ul className="menu bg-base-100 w-full text-center">
             <li>
-              <Link to="/dashboard/myorders">My Orders</Link>
+              <Link to="/dashboard">My Orders</Link>
             </li>
             <li>
-              <Link to="/">My WishList</Link>
+              <Link to="/dashboard/mywishlist">My WishList</Link>
             </li>
           </ul>
         </div>
