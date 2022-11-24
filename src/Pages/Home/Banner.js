@@ -18,30 +18,6 @@ const Banner = () => {
             <h4 className="font-bold text-center overline">
               This is buy and sell web page for used Laptops
             </h4>
-            <p className="max-w-sm mx-auto text-center">
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eveniet
-              provident sunt animi dolor, inventore minus voluptates
-            </p>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="card border shadow-xl">
-            <div className="card-body items-center text-center">
-              <h2 className="card-title">Lenevo</h2>
-              <p>We are using cookies for no reason.</p>
-            </div>
-          </div>
-          <div className="card border shadow-xl">
-            <div className="card-body items-center text-center">
-              <h2 className="card-title">Dell</h2>
-              <p>We are using cookies for no reason.</p>
-            </div>
-          </div>
-          <div className="card border shadow-xl">
-            <div className="card-body items-center text-center">
-              <h2 className="card-title">HP</h2>
-              <p>We are using cookies for no reason.</p>
-            </div>
           </div>
         </div>
       </div>

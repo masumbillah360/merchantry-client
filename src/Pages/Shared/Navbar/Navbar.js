@@ -26,7 +26,7 @@ const Navbar = () => {
   );
   return (
     <div className="">
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-200">
         <div className="navbar-start">
           <div className="dropdown">
             <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -52,8 +52,11 @@ const Navbar = () => {
               {navLink}
             </ul>
           </div>
-          <Link to="/" className="btn btn-ghost normal-case text-xl">
-            CreativBlogs
+          <Link
+            to="/"
+            className="btn btn-ghost uppercase text-xl text-blue-600"
+          >
+            Merchentry
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
