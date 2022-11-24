@@ -11,7 +11,8 @@
     "condition": "Good",
     "location": "Dhaka",
     "cat_id": "dell",
-    "brand": "Dell"
+    "brand": "Dell",
+    "usedOfYear": 2
   },
   {
     "name": "Dell-Latitude-E5550",
@@ -24,7 +25,8 @@
     "condition": "Good",
     "location": "Dhaka",
     "cat_id": "dell",
-    "brand": "Dell"
+    "brand": "Dell",
+    "usedOfYear": 2
   },
   {
     "name": "HP-Pro-Book-430-G3",
@@ -37,7 +39,8 @@
     "condition": "Good",
     "location": "Dhaka",
     "cat_id": "hp",
-    "brand": "HP"
+    "brand": "HP",
+    "usedOfYear": 2
   },
   {
     "name": "HP-Pro-Book-640-G2",
@@ -50,7 +53,8 @@
     "postDate": "12/23/10001",
     "location": "Dhaka",
     "cat_id": "hp",
-    "brand": "HP"
+    "brand": "HP",
+    "usedOfYear": 2
   },
   {
     "name": "Lenovo-Thinkpad-T460-S",
@@ -63,7 +67,8 @@
     "postDate": "12/23/10001",
     "location": "Dhaka",
     "cat_id": "lenevo",
-    "brand": "Lenevo"
+    "brand": "Lenevo",
+    "usedOfYear": 2
   },
   {
     "name": "Lenovo-Think-Pad-X1-Yoga",
@@ -76,6 +81,7 @@
     "postDate": "12/23/10001",
     "location": "Dhaka",
     "cat_id": "lenevo",
-    "brand": "Lenevo"
+    "brand": "Lenevo",
+    "usedOfYear": 2
   }
 ]
