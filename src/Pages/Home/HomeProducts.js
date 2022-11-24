@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { Link } from "react-router-dom";
+import SingleProduct from "../Shared/SignleProduct.js/SingleProduct";
 
 const HomeProducts = () => {
   const { data: homeData = [], isLoading } = useQuery({
@@ -20,44 +20,7 @@ const HomeProducts = () => {
     <div>
       <div className="grid grid-cols-3 gap-7">
         {homeData.map((data) => (
-          <div className="card card-compact bg-base-100 shadow-md border">
-            <figure>
-              <img src={data.thumbnail} alt="Shoes" />
-            </figure>
-            <div className="card-body">
-              <h2 className="card-title text-center md:text-start">
-                {data.name}
-              </h2>
-              <h2 className="card-title">Brand : {data.brand}</h2>
-              <div className="flex justify-between">
-                <span>Purchase Date:{data.purchaseDate}</span>
-                <span>Condition : {data.condition}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Original Price : {data.originalPrice}</span>
-                <span>Present Price : {data.presentPrice}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Location : {data.location}</span>
-                <span>Post Date :{data.postDate}</span>
-              </div>
-              <p>
-                {data.description.length > 100 ? (
-                  <span>{data.description.slice(0, 100)}...</span>
-                ) : (
-                  <span>{data.description}</span>
-                )}
-              </p>
-              <div className="card-actions justify-end">
-                <Link
-                  to={`products/${data._id}`}
-                  className="btn btn-primary btn-sm"
-                >
-                  Details
-                </Link>
-              </div>
-            </div>
-          </div>
+          <SingleProduct key={data._id} data={data} />
         ))}
       </div>
     </div>

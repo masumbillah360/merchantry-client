@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthProvider";
 
 const ProductDetails = () => {
+  const { user } = useContext(AuthContext);
   const data = useLoaderData();
   console.log(data);
+
+  const handleBooking = (productData) => {
+    console.log(productData);
+    const bookingData = {
+      productId: productData._id,
+      userEmail: user.email,
+      thumbnail: productData.thumbnail,
+      price: productData.presentPrice,
+      name: productData.name,
+      brand: productData.brand,
+    };
+    fetch("http://localhost:8000/booking", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(bookingData),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
+  };
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-7 mt-7">
       <div>
@@ -41,7 +65,12 @@ const ProductDetails = () => {
         </div>
         <p className="mt-4">Specification : {data.description}</p>
         <div className="mt-7">
-          <button className="btn btn-primary mr-7">Booking</button>
+          <button
+            onClick={() => handleBooking(data)}
+            className="btn btn-primary mr-7"
+          >
+            Booking
+          </button>
           <button className="btn btn-warning">Buy Now</button>
         </div>
       </div>
