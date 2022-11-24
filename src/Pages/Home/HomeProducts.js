@@ -1,12 +1,20 @@
-import React, { useEffect, useState } from "react";
+import { useQuery } from "@tanstack/react-query";
+import React from "react";
 
 const HomeProducts = () => {
-  const [homeData, setHomeData] = useState([]);
-  useEffect(() => {
-    fetch("fakeData.json")
-      .then((res) => res.json())
-      .then((data) => setHomeData(data));
-  }, []);
+  const { data: homeData = [], isLoading } = useQuery({
+    queryKey: ["homeData"],
+    queryFn: async () => {
+      const res = await fetch("htpp://localhost:8000/products");
+      const data = await res.json();
+      return data;
+    },
+  });
+  if (isLoading) {
+    return (
+      <h1 className="text-enter font-bold text-red-500 text-9xl">Loading</h1>
+    );
+  }
   return (
     <div>
       <div className="grid grid-cols-3 gap-7">

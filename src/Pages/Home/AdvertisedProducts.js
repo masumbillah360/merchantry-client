@@ -1,11 +1,12 @@
+import axios from "axios";
 import React, { useEffect, useState } from "react";
 
 const AdvertisedProducts = () => {
   const [addvertisedData, setAdvertisedData] = useState([]);
   useEffect(() => {
-    fetch("fakeData.json")
-      .then((res) => res.json())
-      .then((data) => setAdvertisedData(data));
+    axios
+      .get("http://localhost:8000/products")
+      .then((res) => setAdvertisedData(res.data));
   }, []);
   return (
     <div>
