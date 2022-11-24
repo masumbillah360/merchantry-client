@@ -1,8 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../contexts/AuthProvider";
 
 const Signup = () => {
+  const { handleCreateuser, handleUpdateUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+
   const {
     register,
     handleSubmit,
@@ -11,6 +15,30 @@ const Signup = () => {
 
   const handleSignIn = (data) => {
     console.log(data);
+    const formData = new FormData();
+    formData.append("image", data.image[0]);
+    console.log(formData);
+    fetch(
+      `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_imgbbKey}`,
+      {
+        method: "POST",
+        body: formData,
+      }
+    )
+      .then((res) => res.json())
+      .then((image) => {
+        console.log(image);
+        handleCreateuser(data.email, data.password)
+          .then((result) => {
+            handleUpdateUser(data.name, image.data.url)
+              .then(() => {
+                navigate("/");
+              })
+              .catch((err) => console.log(err));
+          })
+          .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-7 items-center">
