@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const AdvertisedProducts = () => {
   const [addvertisedData, setAdvertisedData] = useState([]);
@@ -45,7 +46,12 @@ const AdvertisedProducts = () => {
                 )}
               </p>
               <div className="card-actions justify-end">
-                <button className="btn btn-primary btn-sm">Details</button>
+                <Link
+                  to={`products/${data._id}`}
+                  className="btn btn-primary btn-sm"
+                >
+                  Details
+                </Link>
               </div>
             </div>
           </div>

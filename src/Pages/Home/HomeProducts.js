@@ -1,11 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const HomeProducts = () => {
   const { data: homeData = [], isLoading } = useQuery({
     queryKey: ["homeData"],
     queryFn: async () => {
-      const res = await fetch("htpp://localhost:8000/products");
+      const res = await fetch("http://localhost:8000/products");
       const data = await res.json();
       return data;
     },
@@ -40,9 +41,20 @@ const HomeProducts = () => {
                 <span>Location : {data.location}</span>
                 <span>Post Date :{data.postDate}</span>
               </div>
-              <p>{data.description}</p>
+              <p>
+                {data.description.length > 100 ? (
+                  <span>{data.description.slice(0, 100)}...</span>
+                ) : (
+                  <span>{data.description}</span>
+                )}
+              </p>
               <div className="card-actions justify-end">
-                <button className="btn btn-primary btn-sm">Details</button>
+                <Link
+                  to={`products/${data._id}`}
+                  className="btn btn-primary btn-sm"
+                >
+                  Details
+                </Link>
               </div>
             </div>
           </div>
