@@ -11,6 +11,9 @@ const Categories = () => {
       return data;
     },
   });
+  if (isLoading) {
+    return <h1 className="text-4xl font-bold text-red-500">Loading</h1>;
+  }
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
       {categories.map((category) => (
