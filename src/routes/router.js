@@ -1,11 +1,12 @@
 import { createBrowserRouter } from "react-router-dom";
-import Dashboard from "../Layout/Dashboard";
+import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
 import CategoryPage from "../Pages/CategoryPage/CategoryPage";
-import DashHome from "../Pages/Dashboard/DashHome/DashHome";
+import AllSeller from "../Pages/Dashboard/AllSeller/AllSeller";
+import Dashboard from "../Pages/Dashboard/Dashboard";
+import MyWishlist from "../Pages/Dashboard/MyWishlist/MyWishlist";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
-import MyWishlist from "../Pages/MyWishlist/MyWishlist";
 import ProductDetails from "../Pages/Shared/ProductDetails/ProductDetails";
 import Signup from "../Pages/Signup/Signup";
 
@@ -42,10 +43,11 @@ const router = createBrowserRouter([
   },
   {
     path: "/dashboard",
-    element: <Dashboard />,
+    element: <DashboardLayout />,
     children: [
-      { path: "/dashboard", element: <DashHome /> },
+      { path: "/dashboard", element: <Dashboard /> },
       { path: "/dashboard/mywishlist", element: <MyWishlist /> },
+      { path: "/dashboard/allseller", element: <AllSeller /> },
     ],
   },
 ]);

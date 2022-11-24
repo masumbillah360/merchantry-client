@@ -1,4 +1,5 @@
-import React, { useContext } from "react";
+import axios from "axios";
+import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
@@ -7,6 +8,7 @@ import { AuthContext } from "../../contexts/AuthProvider";
 const Signup = () => {
   const { handleCreateuser, handleUpdateUser } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const {
     register,
@@ -19,6 +21,7 @@ const Signup = () => {
     const formData = new FormData();
     formData.append("image", data.image[0]);
     console.log(formData);
+    setLoading(true);
     fetch(
       `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_imgbbKey}`,
       {
@@ -33,7 +36,21 @@ const Signup = () => {
           .then((result) => {
             handleUpdateUser(data.name, image.data.url)
               .then(() => {
-                navigate("/");
+                const user = result.user;
+                const userInfo = {
+                  name: user.displayName,
+                  email: user?.email,
+                  status: data.userStatus,
+                };
+                axios
+                  .post("http://localhost:8000/users", userInfo)
+                  .then((res) => {
+                    console.log(res);
+                    navigate("/");
+                    setLoading(false);
+                    window.location.reload();
+                  })
+                  .catch((err) => console.log(err));
               })
               .catch((err) => console.log(err));
           })
@@ -134,7 +151,12 @@ const Signup = () => {
             </label>
           </div>
           <div className="form-control mt-1">
-            <input type="submit" className="btn btn-primary" value="Sign Up" />
+            <button
+              type="submit"
+              className={`btn btn-primary ${loading ? "btn-disabled" : ""}`}
+            >
+              {loading ? "Loading" : "SignUp"}
+            </button>
           </div>
           <div className="form-control mt-7">
             <button className="btn btn-primary">

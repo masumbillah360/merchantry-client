@@ -43,9 +43,8 @@ const CategoryPage = () => {
               </p>
               <div className="card-actions justify-end">
                 <button
-                  //   to={`products/${product._id}`}
+                  className="btn btn-primary btn-sm "
                   onClick={() => navigate(`/products/${product._id}`)}
-                  className="btn btn-primary btn-sm"
                 >
                   Details
                 </button>
