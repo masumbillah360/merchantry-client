@@ -1,21 +1,24 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Signup = () => {
+  const [userStatus, setUserStatus] = useState("");
+  console.log(userStatus);
+  const handleUserStatus = (e) => {
+    console.log(e.target.value);
+  };
   return (
     <div>
-      <div className="hero ">
-        <div className="hero-content">
-          <div>
-            <div className="text-center lg:text-left">
-              <h1 className="text-xl font-bold text-center">
-                Create account on
-                <span className="text-primary"> Merchentry</span>
-              </h1>
-              <p className="py-0 overline text-center font-bold">
-                Buy & Sell E-commerce!!
-              </p>
+      <div className=" ">
+        <div className="">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-7 items-center">
+            <div className="text-center lg:text-end">
+              <h4>Create Account on</h4>
+              <h1 className="text-5xl font-bold text-primary">Merchentry</h1>
+              <p className="py-0 overline font-bold">Buy & Sell E-commerce!!</p>
+              <p>Trusted E-commerse for used Laptop</p>
             </div>
-            <div className="card flex-shrink-0 w-full max-w-md shadow-xl">
+            <div className="card flex-shrink-0 shadow-xl">
               <div className="card-body">
                 <div className="form-control">
                   <label className="label">
@@ -39,23 +42,17 @@ const Signup = () => {
                   />
                 </div>
                 <div className="form-control">
-                  <label className="label cursor-pointer">
-                    <span className="label-text">Seller</span>
-                    <input
-                      type="radio"
-                      name="radio-4"
-                      value="seller"
-                      className="radio radio-accent"
-                      checked
-                    />
-                    <span>Buyer</span>
-                    <input
-                      type="radio"
-                      name="radio-4"
-                      value="buyer"
-                      className="radio radio-accent"
-                    />
+                  <label className="label">
+                    <span className="label-text">Select User Category</span>
                   </label>
+                  <select
+                    defaultValue={"Buyer"}
+                    onChange={(e) => handleUserStatus(e)}
+                    className="select select-primary w-full"
+                  >
+                    <option value="buyer">Buyer</option>
+                    <option value="seller">Seller</option>
+                  </select>
                 </div>
 
                 <div className="form-control">
@@ -64,7 +61,7 @@ const Signup = () => {
                   </label>
                   <input
                     type="file"
-                    className="file-input file-input-bordered file-input-primary w-full max-w-xs"
+                    className="file-input file-input-bordered file-input-primary w-full"
                   />
                 </div>
                 <div className="form-control">
@@ -77,9 +74,13 @@ const Signup = () => {
                     className="input input-bordered"
                   />
                   <label className="label">
-                    <a href="#" className="label-text-alt link link-hover">
-                      Forgot password?
-                    </a>
+                    <Link
+                      to="/login"
+                      className="label-text-alt link link-hover"
+                    >
+                      Already have an account ?
+                      <span className="text-primary">Login</span>
+                    </Link>
                   </label>
                 </div>
                 <div className="form-control mt-1">
