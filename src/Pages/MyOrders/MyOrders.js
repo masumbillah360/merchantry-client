@@ -11,6 +11,9 @@ const MyOrders = () => {
       return data;
     },
   });
+  if (isLoading) {
+    return <h1>Loading...</h1>;
+  }
   return (
     <div className="overflow-x-auto w-full">
       <table className="table w-full">
