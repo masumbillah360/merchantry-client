@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
@@ -81,6 +82,7 @@ const Signup = () => {
               })}
               className="input input-bordered"
             />
+            {errors.email && <span>{errors.email.message}</span>}
           </div>
           <div className="form-control">
             <label className="label">
@@ -94,6 +96,7 @@ const Signup = () => {
               <option value="buyer">Buyer</option>
               <option value="seller">Seller</option>
             </select>
+            {errors.userStatus && <span>{errors.userStatus.message}</span>}
           </div>
 
           <div className="form-control">
@@ -106,6 +109,7 @@ const Signup = () => {
               {...register("image", { required: "Please select an image" })}
               className="file-input file-input-bordered file-input-primary w-full"
             />
+            {errors.image && <span>{errors.image.message}</span>}
           </div>
           <div className="form-control">
             <label className="label">
@@ -121,6 +125,7 @@ const Signup = () => {
               placeholder="password"
               className="input input-bordered"
             />
+            {errors.password && <span>{errors.password.message}</span>}
             <label className="label">
               <Link to="/login" className="label-text-alt link link-hover">
                 Already have an account ?
@@ -130,6 +135,11 @@ const Signup = () => {
           </div>
           <div className="form-control mt-1">
             <input type="submit" className="btn btn-primary" value="Sign Up" />
+          </div>
+          <div className="form-control mt-7">
+            <button className="btn btn-primary">
+              Login With Google <FcGoogle className="ml-2" />{" "}
+            </button>
           </div>
         </form>
       </div>

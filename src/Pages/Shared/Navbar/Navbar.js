@@ -17,14 +17,25 @@ const Navbar = () => {
         <Link to="/">Wishlisht</Link>
       </li>
       <li>
-        <Link to="/profile">Profile</Link>
+        <Link to="/dashboard">Dashboard</Link>
       </li>
       <li>
-        <Link to="/login">Login</Link>
+        <Link to="/blog">Blog</Link>
       </li>
-      <li>
-        <Link to="/signup">SignUp</Link>
-      </li>
+      {user?.uid ? (
+        <li>
+          <button>Log Out</button>
+        </li>
+      ) : (
+        <>
+          <li>
+            <Link to="/login">Login</Link>
+          </li>
+          <li>
+            <Link to="/signup">SignUp</Link>
+          </li>
+        </>
+      )}
     </>
   );
   return (
@@ -69,7 +80,7 @@ const Navbar = () => {
           <div className="dropdown dropdown-end">
             <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
               <div className="w-10 rounded-full">
-                <img src="" alt="" />
+                <img src={user?.photoURL} alt="" />
               </div>
             </label>
             <ul
@@ -78,20 +89,17 @@ const Navbar = () => {
             >
               <li>
                 <Link to="/" className="justify-between">
-                  User Name
+                  {user?.displayName}
                 </Link>
               </li>
               <li>
-                <Link to="/">WishLisht</Link>
-              </li>
-              <li>
-                <Link to="/">Booking</Link>
+                <Link to="/">Dashboard</Link>
               </li>
               <li>
                 <Link to="/">Orders</Link>
               </li>
               <li>
-                <Link to="/">Settings</Link>
+                <Link to="/">Booking</Link>
               </li>
               <li>
                 <button>Log Out</button>
