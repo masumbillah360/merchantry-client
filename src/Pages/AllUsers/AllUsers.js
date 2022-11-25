@@ -11,6 +11,9 @@ const AllUsers = () => {
       return data;
     },
   });
+  if (isLoading) {
+    return <h1 className="text-4xl text-red-500">Loading...</h1>;
+  }
   return (
     <div>
       Total User : {allUsers.length}
