@@ -8,6 +8,7 @@ import Dashboard from "../Pages/Dashboard/Dashboard";
 import MyOrders from "../Pages/Dashboard/MyOrders/MyOrders";
 import MyWishlist from "../Pages/Dashboard/MyWishlist/MyWishlist";
 import Payment from "../Pages/Dashboard/Payment/Payment";
+import UsersOrderHistory from "../Pages/Dashboard/UsersOrderHistory/UsersOrderHistory";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
@@ -54,6 +55,7 @@ const router = createBrowserRouter([
       { path: "/dashboard", element: <Dashboard /> },
       { path: "/dashboard/mywishlist", element: <MyWishlist /> },
       { path: "/dashboard/myorders", element: <MyOrders /> },
+      { path: "/dashboard/orderhistory", element: <UsersOrderHistory /> },
       { path: "/dashboard/allseller", element: <AllSeller /> },
       { path: "/dashboard/allusers", element: <AllUsers /> },
       {

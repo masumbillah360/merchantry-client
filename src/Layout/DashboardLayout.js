@@ -52,6 +52,9 @@ const DashboardLayout = () => {
           <li>
             <Link to="/dashboard/mywishlist">My WishList</Link>
           </li>
+          <li>
+            <Link to="/dashboard/orderhistory">Order History</Link>
+          </li>
         </>
       )}
     </>
@@ -60,8 +63,8 @@ const DashboardLayout = () => {
     <div className="container mx-auto">
       <Navbar />
       <div className="grid grid-cols-1 mt-7 gap-7">
-        <div className="">
-          <ul className="menu bg-base-100 w-full grid grid-cols-1 md:grid-cols-3 text-center">
+        <div className="w-full flex justify-center items-center mx-auto">
+          <ul className="menu bg-base-100 w-full mx-auto grid grid-cols-1 md:grid-cols-3 justify-between">
             {navLink}
           </ul>
         </div>
