@@ -31,9 +31,9 @@ const AddProducts = () => {
       .then((res) => res.json())
       .then((image) => {
         console.log(image);
-        const time = new Date().getDate().toLocaleString();
+        const time = new Date().toDateString();
         const productsInfo = {
-          thumbnail: image.data.data.url,
+          thumbnail: image?.data?.data?.url,
           userName: user?.displayName,
           userEmail: user?.email,
           title: data.title,
@@ -49,11 +49,13 @@ const AddProducts = () => {
           .post("http://localhost:8000/sellers-product", productsInfo)
           .then((res) => {
             console.log(res);
-            navigate("/myproducts");
+            navigate("/dashboard/myproducts");
             setLoading(false);
-            window.location.reload();
           })
-          .catch((err) => console.log(err));
+          .catch((err) => {
+            console.log(err);
+            setLoading(false);
+          });
       })
       .catch((err) => console.log(err));
   };
