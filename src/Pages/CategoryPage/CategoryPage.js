@@ -1,15 +1,15 @@
 import React from "react";
-import { useLoaderData, useNavigate } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
+import SingleProduct from "../Shared/SignleProduct.js/SingleProduct";
 
 const CategoryPage = () => {
   const products = useLoaderData();
-  const navigate = useNavigate();
+
   console.log(products);
   return (
     <div>
       <div className="grid grid-cols-2 gap-7 mt-7">
-        {products.map((product) => (
-          <div className="card card-compact bg-base-100 shadow-md border">
+        {/* <div className="card card-compact bg-base-100 shadow-md border">
             <figure>
               <img src={product.thumbnail} className="p-10" alt="Shoes" />
             </figure>
@@ -50,7 +50,9 @@ const CategoryPage = () => {
                 </button>
               </div>
             </div>
-          </div>
+          </div> */}
+        {products.map((product) => (
+          <SingleProduct data={product} key={product._id} />
         ))}
       </div>
     </div>

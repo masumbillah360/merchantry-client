@@ -25,7 +25,7 @@ const SingleProduct = ({ data }) => {
         </div>
         <div className="flex justify-between">
           <span>Location : {data.location}</span>
-          <span>Post Date :{data.postDate}</span>
+          <span>Date :{data.postDate}</span>
         </div>
         <p>
           {data.description.length > 80 ? (
