@@ -2,18 +2,23 @@ import axios from "axios";
 import React from "react";
 
 const BookingModal = ({ bookingData, setBookingData }) => {
-  console.log(bookingData);
   const handleBooking = (e) => {
     e.preventDefault();
-    const location = e.target.location.value;
-    const phoneNumber = e.target.phone.value;
-    bookingData.userLocation = location;
-    bookingData.phoneNumber = phoneNumber;
+    const bookingInfo = {
+      phone: e.target.phone.value,
+      location: e.target.location.value,
+      productId: bookingData?.productId,
+      thumbnail: bookingData?.thumbnail,
+      price: bookingData?.price,
+      name: bookingData?.name,
+      brand: bookingData?.brand,
+      userName: bookingData?.userName,
+      userEmail: bookingData?.userEmail,
+    };
     axios
-      .post("http://localhost:8000/booking", bookingData)
+      .post("http://localhost:8000/booking", bookingInfo)
       .then((res) => {
-        console.log(res.data);
-        e.target.reset();
+        console.log(res);
         setBookingData(null);
       })
       .catch((err) => console.log(err));
@@ -26,19 +31,19 @@ const BookingModal = ({ bookingData, setBookingData }) => {
           <h3 className="text-lg font-bold">{bookingData?.name}</h3>
           <form onSubmit={handleBooking} className="grid grid-cols-1 gap-3">
             <input
-              defaultValue={"Price : " + bookingData.price + " $"}
+              defaultValue={"Price : " + bookingData?.price + " $"}
               readOnly
               type="text"
               className="input input-bordered w-full"
             />
             <input
-              defaultValue={bookingData.userEmail}
+              defaultValue={bookingData?.userEmail}
               type="text"
               readOnly
               className="input input-bordered w-full"
             />
             <input
-              defaultValue={bookingData.userName}
+              defaultValue={bookingData?.userName}
               type="text"
               readOnly
               className="input input-bordered w-full"

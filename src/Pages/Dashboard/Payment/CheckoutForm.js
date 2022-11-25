@@ -1,32 +1,10 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
-const CheckoutForm = ({ bookingData }) => {
-  console.log(bookingData);
+const CheckoutForm = () => {
   const [cardError, setCardError] = useState(null);
-  const [clientSecrete, setClientSecrete] = useState("");
-  console.log(clientSecrete);
   const stripe = useStripe();
   const elements = useElements();
-  const paymentInfo = {
-    price: bookingData.price,
-    productId: bookingData.productId,
-    userName: bookingData.userName,
-    userEmail: bookingData.userEmail,
-    transactionId: clientSecrete,
-  };
-  useEffect(() => {
-    fetch("http://localhost:8000/create-payment-intent", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(bookingData),
-    })
-      .then((res) => res.json())
-      .then((data) => setClientSecrete(data.clientSecret));
-  }, [bookingData]);
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!stripe || !elements) {
@@ -45,15 +23,11 @@ const CheckoutForm = ({ bookingData }) => {
       setCardError(error);
     } else {
       console.log(paymentMethod);
-      axios
-        .post("http://localhost:8000/payments", paymentInfo)
-        .then((res) => console.log(res))
-        .catch((err) => console.log(err));
     }
   };
   return (
     <div>
-      <form onSubmit={handleSubmit} className="py-5 border rounded-lg">
+      <form onSubmit={handleSubmit} className="border">
         <CardElement
           options={{
             style: {
@@ -70,10 +44,10 @@ const CheckoutForm = ({ bookingData }) => {
             },
           }}
         />
-        <div className="text-center mt-7">
+        <div className="text-center">
           <button
             type="submit"
-            className="btn btn-primary w-24"
+            className="btn btn-primary btn-sm"
             disabled={!stripe}
           >
             Pay

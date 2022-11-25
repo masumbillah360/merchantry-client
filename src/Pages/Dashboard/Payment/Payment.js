@@ -1,11 +1,13 @@
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-import React from "react";
+import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthProvider";
 import CheckoutForm from "./CheckoutForm";
 
 const Payment = () => {
   const bookingData = useLoaderData();
+  const { user } = useContext(AuthContext);
   const stripePromise = loadStripe(process.env.REACT_APP_stripeKey);
   return (
     <Elements stripe={stripePromise}>
@@ -15,11 +17,11 @@ const Payment = () => {
             Payment for <span className="text-info">{bookingData?.name}</span>
           </h1>
           <h4 className="text-primary font-bold text-xl">
-            Price : {bookingData?.price}
+            Price : {bookingData?.presentPrice}
           </h4>
-          <h4>Email : {bookingData?.userEmail}</h4>
-          <h4>Name : {bookingData?.userName}</h4>
-          <h4>Location : {bookingData?.userLocation}</h4>
+          <h4>Email : {user?.email}</h4>
+          <h4>Name : {user?.displayName}</h4>
+          <h4>{bookingData?.userLocation}</h4>
         </div>
         <div className="my-10">
           <CheckoutForm bookingData={bookingData} />

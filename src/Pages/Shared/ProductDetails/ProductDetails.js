@@ -1,14 +1,12 @@
 import React, { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
-import BookingModal from "../BookingModal/BookingModal";
+import BookingModal from "../../Dashboard/Payment/BookingModal";
 
 const ProductDetails = () => {
   const { user } = useContext(AuthContext);
-  console.log(user);
   const data = useLoaderData();
   const [bookingData, setBookingData] = useState(null);
-  console.log(data);
   const bookingInfo = {
     productId: data._id,
     userEmail: user?.email,
@@ -17,9 +15,6 @@ const ProductDetails = () => {
     price: data.presentPrice,
     name: data.name,
     brand: data.brand,
-  };
-  const handleBooking = () => {
-    setBookingData(bookingInfo);
   };
   const handleWishlist = () => {
     console.log(bookingInfo);
@@ -76,7 +71,7 @@ const ProductDetails = () => {
               Wishlisth
             </button>
             <label
-              onClick={handleBooking}
+              onClick={() => setBookingData(bookingInfo)}
               htmlFor="bookingModal"
               className="btn btn-info"
             >
