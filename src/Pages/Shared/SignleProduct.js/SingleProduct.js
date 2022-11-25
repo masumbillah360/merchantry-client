@@ -5,7 +5,11 @@ const SingleProduct = ({ data }) => {
   return (
     <div className="card card-compact bg-base-100 shadow-md border">
       <figure>
-        <img className="p-3" src={data.thumbnail} alt="Product Thumbnail" />
+        <img
+          className="p-3 h-48"
+          src={data.thumbnail}
+          alt="Product Thumbnail"
+        />
       </figure>
       <div className="card-body">
         <h2 className="text-xl font-bold text-center md:text-start">
