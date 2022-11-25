@@ -29,7 +29,7 @@ const OrderRow = ({ order }) => {
         >
           Del
         </button>
-        <button className="btn btn-info btn-xs">Pay</button>
+        <button className="btn btn-primary btn-xs">Pay</button>
       </th>
     </tr>
   );

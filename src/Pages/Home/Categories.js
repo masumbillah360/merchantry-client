@@ -18,6 +18,7 @@ const Categories = () => {
     <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
       {categories.map((category) => (
         <Link
+          key={category._id}
           to={`/category/${category.cat_id}`}
           className="card border shadow-md"
         >

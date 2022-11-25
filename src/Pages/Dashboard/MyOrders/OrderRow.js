@@ -25,11 +25,11 @@ const OrderRow = ({ order }) => {
       <th>
         <button
           onClick={() => handleDelete(order._id)}
-          className="btn btn-ghost btn-xs"
+          className="btn btn-error btn-xs mr-3"
         >
           Del
         </button>
-        <button className="btn btn-ghost btn-xs">Pay</button>
+        <button className="btn btn-primary btn-xs">Pay</button>
       </th>
     </tr>
   );

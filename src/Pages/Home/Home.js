@@ -9,13 +9,13 @@ const Home = () => {
     <div>
       <Banner />
       <Categories />
-      <h1 className="text-end text-primary font-extrabold mt-7">
+      <h1 className="text-end text-primary font-extrabold mt-16">
         Specail Products for You!!!
       </h1>
 
       <AdvertisedProducts />
 
-      <h1 className="text-end text-primary font-extrabold mt-7">
+      <h1 className="text-end text-primary font-extrabold mt-16">
         All Products for You!!!
       </h1>
       <HomeProducts />
