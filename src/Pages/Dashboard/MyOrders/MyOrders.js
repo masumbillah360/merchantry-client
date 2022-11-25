@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import WishlistRow from "./WishlistRow";
+import OrderRow from "./OrderRow";
 
 const MyOrders = () => {
-  const { data: allWishlist = [], isLoading } = useQuery({
-    queryKey: ["allWishlist"],
+  const { data: allOrders = [], isLoading } = useQuery({
+    queryKey: ["allOrders"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:8000/wishlist");
+      const res = await fetch("http://localhost:8000/booking");
       const data = await res.json();
       return data;
     },
@@ -26,8 +26,8 @@ const MyOrders = () => {
           </tr>
         </thead>
         <tbody>
-          {allWishlist.map((order) => (
-            <WishlistRow key={order._id} order={order} />
+          {allOrders.map((order) => (
+            <OrderRow key={order._id} order={order} />
           ))}
         </tbody>
       </table>

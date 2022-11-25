@@ -9,29 +9,30 @@ const ProductDetails = () => {
   const data = useLoaderData();
   const [bookingData, setBookingData] = useState(null);
   console.log(data);
-
-  const handleBooking = (productData) => {
-    console.log(productData);
-    const bookingInfo = {
-      productId: productData._id,
-      userEmail: user?.email,
-      userName: user?.displayName,
-      thumbnail: productData.thumbnail,
-      price: productData.presentPrice,
-      name: productData.name,
-      brand: productData.brand,
-    };
+  const bookingInfo = {
+    productId: data._id,
+    userEmail: user?.email,
+    userName: user?.displayName,
+    thumbnail: data.thumbnail,
+    price: data.presentPrice,
+    name: data.name,
+    brand: data.brand,
+  };
+  const handleBooking = () => {
     setBookingData(bookingInfo);
-    // fetch("http://localhost:8000/booking", {
-    //   method: "POST",
-    //   headers: {
-    //     "content-type": "application/json",
-    //   },
-    //   body: JSON.stringify(bookingData),
-    // })
-    //   .then((res) => res.json())
-    //   .then((data) => console.log(data))
-    //   .catch((err) => console.log(err));
+  };
+  const handleWishlist = () => {
+    console.log(bookingInfo);
+    fetch("http://localhost:8000/wishlist", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(bookingInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data))
+      .catch((err) => console.log(err));
   };
   return (
     <>
@@ -71,14 +72,11 @@ const ProductDetails = () => {
           </div>
           <p className="mt-4">Specification : {data.description}</p>
           <div className="mt-7">
-            <button
-              onClick={() => handleBooking(data)}
-              className="btn btn-primary mr-7"
-            >
+            <button onClick={handleWishlist} className="btn btn-primary mr-7">
               Wishlisth
             </button>
             <label
-              onClick={() => handleBooking(data)}
+              onClick={handleBooking}
               htmlFor="bookingModal"
               className="btn btn-info"
             >
