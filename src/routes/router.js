@@ -5,12 +5,15 @@ import AllUsers from "../Pages/AllUsers/AllUsers";
 import CategoryPage from "../Pages/CategoryPage/CategoryPage";
 import AllSeller from "../Pages/Dashboard/AllSeller/AllSeller";
 import Dashboard from "../Pages/Dashboard/Dashboard";
-import MyOrders from "../Pages/Dashboard/Seller/MyOrders/MyOrders";
-import MyWishlist from "../Pages/Dashboard/Seller/MyWishlist/MyWishlist";
-import Payment from "../Pages/Dashboard/Seller/Payment/Payment";
+import AddProducts from "../Pages/Dashboard/Seller/AddProducts/AddProducts";
+import MyBuers from "../Pages/Dashboard/Seller/MyBuyers/MyBuers";
+import MyProducts from "../Pages/Dashboard/Seller/MyProducts/MyProducts";
+import MyOrders from "../Pages/Dashboard/User/MyOrders/MyOrders";
+import MyWishlist from "../Pages/Dashboard/User/MyWishlist/MyWishlist";
+import Payment from "../Pages/Dashboard/User/Payment/Payment";
 
-import ProductDetails from "../Pages/Dashboard/Seller/ProductDetails/ProductDetails";
-import UsersOrderHistory from "../Pages/Dashboard/Seller/UsersOrderHistory/UsersOrderHistory";
+import ProductDetails from "../Pages/Dashboard/User/ProductDetails/ProductDetails";
+import UsersOrderHistory from "../Pages/Dashboard/User/UsersOrderHistory/UsersOrderHistory";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
@@ -65,6 +68,9 @@ const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:8000/booking/${params.id}`),
       },
+      { path: "/dashboard/addproduct", element: <AddProducts /> },
+      { path: "/dashboard/myproducts", element: <MyProducts /> },
+      { path: "/dashboard/mybuyer", element: <MyBuers /> },
     ],
   },
 ]);
