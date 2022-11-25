@@ -17,11 +17,11 @@ const Payment = () => {
             Payment for <span className="text-info">{bookingData?.name}</span>
           </h1>
           <h4 className="text-primary font-bold text-xl">
-            Price : {bookingData?.presentPrice}
+            Price : {bookingData?.price}
           </h4>
           <h4>Email : {user?.email}</h4>
           <h4>Name : {user?.displayName}</h4>
-          <h4>{bookingData?.userLocation}</h4>
+          <h4>Location : {bookingData?.userLocation}</h4>
         </div>
         <div className="my-10">
           <CheckoutForm bookingData={bookingData} />

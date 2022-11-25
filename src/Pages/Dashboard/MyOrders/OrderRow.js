@@ -3,7 +3,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const OrderRow = ({ order }) => {
-  console.log(order);
   const handleDelete = (id) => {
     axios
       .delete(`http://localhost:8000/orders/${id}`)

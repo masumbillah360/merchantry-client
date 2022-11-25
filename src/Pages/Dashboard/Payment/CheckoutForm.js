@@ -1,10 +1,23 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 
-const CheckoutForm = () => {
+const CheckoutForm = ({ bookingData }) => {
   const [cardError, setCardError] = useState(null);
+  const [clientSecrete, setClientSecrete] = useState("");
   const stripe = useStripe();
   const elements = useElements();
+  useEffect(() => {
+    fetch("http://localhost:8000/create-payment-intent", {
+      method: "POST",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(bookingData),
+    })
+      .then((res) => res.json())
+      .then((data) => setClientSecrete(data.clientSecret));
+  }, [bookingData]);
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!stripe || !elements) {
@@ -23,6 +36,11 @@ const CheckoutForm = () => {
       setCardError(error);
     } else {
       console.log(paymentMethod);
+      bookingData.transactionId = clientSecrete;
+      axios
+        .post("http://localhost:8000/payments", bookingData)
+        .then((res) => console.log(res))
+        .catch((err) => console.log(err));
     }
   };
   return (
