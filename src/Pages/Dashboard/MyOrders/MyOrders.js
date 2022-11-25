@@ -6,7 +6,11 @@ import OrderRow from "./OrderRow";
 const MyOrders = () => {
   const { user } = useContext(AuthContext);
   const email = user?.email;
-  const { data: allOrders = [], isLoading } = useQuery({
+  const {
+    data: allOrders = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["allOrders"],
     queryFn: async () => {
       const res = await fetch(`http://localhost:8000/booking?email=${email}`);
@@ -30,7 +34,7 @@ const MyOrders = () => {
         </thead>
         <tbody>
           {allOrders.map((order) => (
-            <OrderRow key={order._id} order={order} />
+            <OrderRow key={order._id} order={order} refetch={refetch} />
           ))}
         </tbody>
       </table>

@@ -1,6 +1,7 @@
 import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 const CheckoutForm = ({ bookingData }) => {
   const [cardError, setCardError] = useState(null);
@@ -39,7 +40,11 @@ const CheckoutForm = ({ bookingData }) => {
       bookingData.transactionId = clientSecrete;
       axios
         .post("http://localhost:8000/payments", bookingData)
-        .then((res) => console.log(res))
+        .then((res) => {
+          console.log(res);
+          console.log(res.data.status);
+          toast.success(res.data.data.status);
+        })
         .catch((err) => console.log(err));
     }
   };

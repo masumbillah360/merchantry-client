@@ -1,12 +1,14 @@
 import axios from "axios";
 import React from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
-const OrderRow = ({ order }) => {
+const OrderRow = ({ order, refetch }) => {
   const handleDelete = (id) => {
-    axios
-      .delete(`http://localhost:8000/orders/${id}`)
-      .then(() => alert("succes"));
+    axios.delete(`http://localhost:8000/booking/${id}`).then(() => {
+      toast.success("Successfylly deleted");
+      refetch();
+    });
   };
   return (
     <tr className="hover">

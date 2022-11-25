@@ -3,7 +3,11 @@ import React from "react";
 import WishlistRow from "./WishlistRow";
 
 const MyOrders = () => {
-  const { data: allWishlist = [], isLoading } = useQuery({
+  const {
+    data: allWishlist = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["allWishlist"],
     queryFn: async () => {
       const res = await fetch("http://localhost:8000/wishlist");
@@ -27,7 +31,7 @@ const MyOrders = () => {
         </thead>
         <tbody>
           {allWishlist.map((order) => (
-            <WishlistRow key={order._id} order={order} />
+            <WishlistRow key={order._id} order={order} refetch={refetch} />
           ))}
         </tbody>
       </table>

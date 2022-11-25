@@ -1,13 +1,19 @@
 import axios from "axios";
 import React from "react";
+import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
-const OrderRow = ({ order }) => {
+const WishlisthRow = ({ order, refetch }) => {
   console.log(order);
   const handleDelete = (id) => {
+    console.log(id);
     axios
-      .delete(`http://localhost:8000/booking/${id}`)
-      .then(() => alert("succes"));
+      .delete(`http://localhost:8000/wishlist/${id}`)
+      .then(() => {
+        toast.success("Successfylly Deleted");
+        refetch();
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <tr className="hover">
@@ -42,4 +48,4 @@ const OrderRow = ({ order }) => {
   );
 };
 
-export default OrderRow;
+export default WishlisthRow;
