@@ -1,7 +1,9 @@
 import axios from "axios";
 import React from "react";
+import { Link } from "react-router-dom";
 
 const OrderRow = ({ order }) => {
+  console.log(order);
   const handleDelete = (id) => {
     axios
       .delete(`http://localhost:8000/booking/${id}`)
@@ -29,7 +31,12 @@ const OrderRow = ({ order }) => {
         >
           Del
         </button>
-        <button className="btn btn-primary btn-xs">Pay</button>
+        <Link
+          to={`/dashboard/payment/${order._id}`}
+          className="btn btn-primary btn-xs"
+        >
+          Pay
+        </Link>
       </th>
     </tr>
   );
