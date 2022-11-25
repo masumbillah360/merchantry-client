@@ -30,10 +30,12 @@ const AddProducts = () => {
     )
       .then((res) => res.json())
       .then((image) => {
-        console.log(image);
+        console.log(image.data.url);
+        setLoading(false);
         const time = new Date().toDateString();
         const productsInfo = {
-          thumbnail: image?.data?.data?.url,
+          thumbnail: image?.data?.url,
+          category: data.category.value,
           userName: user?.displayName,
           userEmail: user?.email,
           title: data.title,
@@ -45,6 +47,7 @@ const AddProducts = () => {
           usedYears: data.usedYears,
           date: time,
         };
+        console.log(productsInfo);
         axios
           .post("http://localhost:8000/sellers-product", productsInfo)
           .then((res) => {
@@ -116,24 +119,49 @@ const AddProducts = () => {
           </div>
 
           <div className="flex flex-col md:flex-row justify-between gap-4">
-            <div className="form-control w-full">
-              <label className="label">
-                <span className="label-text">Select Prodcuts Condition</span>
-              </label>
-              <select
-                defaultValue="buyer"
-                {...register("productCondition", {
-                  required: "Select Prodcut Condition",
-                })}
-                className="select input-bordered w-full"
-              >
-                <option value="Good">Good</option>
-                <option value="Fare">Fare</option>
-                <option value="Bad">Bad</option>
-              </select>
-              {errors.productCondition && (
-                <span>{errors.productCondition.message}</span>
-              )}
+            <div className="flex flex-col md:flex-row justify-between gap-3 w-full">
+              <div className="form-control w-full">
+                <label className="label">
+                  <span className="label-text">Prodcuts Condition</span>
+                </label>
+                <select
+                  defaultValue="Good"
+                  {...register("productCondition", {
+                    required: "Select Prodcut Condition",
+                  })}
+                  className="select input-bordered w-full"
+                >
+                  <option selected value="Good">
+                    Good
+                  </option>
+                  <option value="Fare">Fare</option>
+                  <option value="Bad">Bad</option>
+                </select>
+                {errors.productCondition && (
+                  <span>{errors.productCondition.message}</span>
+                )}
+              </div>
+              <div className="form-control w-full">
+                <label className="label">
+                  <span className="label-text">Select Category</span>
+                </label>
+                <select
+                  defaultValue="dell"
+                  {...register("category", {
+                    required: "Select Prodcut Condition",
+                  })}
+                  className="select input-bordered w-full"
+                >
+                  <option selected value="dell">
+                    Dell
+                  </option>
+                  <option value="hp">Hp</option>
+                  <option value="lenevo">Lenevo</option>
+                </select>
+                {errors.productCondition && (
+                  <span>{errors.productCondition.message}</span>
+                )}
+              </div>
             </div>
 
             <div className="form-control w-full">
