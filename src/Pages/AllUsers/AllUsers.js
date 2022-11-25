@@ -15,25 +15,27 @@ const AllUsers = () => {
     return <h1 className="text-4xl text-red-500">Loading...</h1>;
   }
   return (
-    <div>
+    <>
       Total User : {allUsers.length}
-      <table className="table w-full">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Status</th>
-            <th>Verified</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {allUsers.map((user) => (
-            <AllSellerRow key={user._id} user={user} />
-          ))}
-        </tbody>
-      </table>
-    </div>
+      <div className="overflow-x-auto w-full">
+        <table className="table w-full">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Status</th>
+              <th>Verified</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {allUsers.map((user) => (
+              <AllSellerRow key={user._id} user={user} />
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 };
 

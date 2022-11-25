@@ -17,22 +17,24 @@ const AllSeller = () => {
   return (
     <div>
       Total Seller : {allSeller.length}
-      <table className="table w-full">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>Status</th>
-            <th>Verified</th>
-            <th>Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          {allSeller.map((seller) => (
-            <AllSellerRow key={seller._id} user={seller} />
-          ))}
-        </tbody>
-      </table>
+      <div className="overflow-x-auto w-full">
+        <table className="table w-full">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Status</th>
+              <th>Verified</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {allSeller.map((seller) => (
+              <AllSellerRow key={seller._id} user={seller} />
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
