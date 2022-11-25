@@ -59,9 +59,11 @@ const DashboardLayout = () => {
   return (
     <div className="container mx-auto">
       <Navbar />
-      <div className="grid grid-cols-12 mt-7 gap-7">
-        <div className="col-span-4">
-          <ul className="menu bg-base-100 w-full text-center">{navLink}</ul>
+      <div className="grid grid-cols-1 mt-7 gap-7">
+        <div className="">
+          <ul className="menu bg-base-100 w-full grid grid-cols-1 md:grid-cols-3 text-center">
+            {navLink}
+          </ul>
         </div>
         <div className="col-span-8">
           <Outlet />
