@@ -35,9 +35,10 @@ const AddProducts = () => {
         const time = new Date().toDateString();
         const productsInfo = {
           thumbnail: image?.data?.url,
-          category: data.category.value,
+          category: data.category,
           userName: user?.displayName,
           userEmail: user?.email,
+          userThumb: user?.photoURL,
           title: data.title,
           mobile: data.mobile,
           description: data.description,
@@ -186,9 +187,8 @@ const AddProducts = () => {
                 <span className="label-text">Photo</span>
               </label>
               <input
-                required
                 type="file"
-                {...register("image", { required: "Please select an image" })}
+                {...register("image")}
                 className="file-input file-input-bordered file-input-primary w-full"
               />
               {errors.image && <span>{errors.image.message}</span>}

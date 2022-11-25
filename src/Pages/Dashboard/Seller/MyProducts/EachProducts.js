@@ -1,12 +1,22 @@
+import axios from "axios";
 import React from "react";
 
-const EachProducts = ({ product }) => {
+const EachProducts = ({ product, refetch }) => {
+  const handleDeleteProduct = (id) => {
+    axios
+      .delete(`http://localhost:8000/sellers-product/${id}`)
+      .then((res) => {
+        console.log(res);
+        refetch();
+      })
+      .catch((err) => console.log(err));
+  };
   return (
     <div>
       <div className="card card-compact bg-base-100 shadow-md border">
         <figure>
           <img
-            className="p-3 w-full h-40"
+            className="p-3 w-full h-48"
             src={product?.thumbnail}
             alt="Product? Thumbnail"
           />
@@ -37,7 +47,12 @@ const EachProducts = ({ product }) => {
             )}
           </p>
           <div className="card-actions justify-end">
-            <button className="btn btn-sm btn-error">Delete</button>
+            <button
+              onClick={() => handleDeleteProduct(product._id)}
+              className="btn btn-sm btn-error"
+            >
+              Delete
+            </button>
             <button className="btn btn-sm btn-primary">Advertised</button>
           </div>
         </div>
