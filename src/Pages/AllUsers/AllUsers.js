@@ -1,22 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import AllSellerRow from "./AllSellerRow";
+import AllSellerRow from "../Dashboard/AllSeller/AllSellerRow";
 
-const AllSeller = () => {
-  const { data: allSeller = [], isLoading } = useQuery({
-    queryKey: ["allSeller"],
+const AllUsers = () => {
+  const { data: allUsers = [], isLoading } = useQuery({
+    queryKey: ["allUsers"],
     queryFn: async () => {
       const res = await fetch("http://localhost:8000/users?userStatus=seller");
       const data = await res.json();
       return data;
     },
   });
-  if (isLoading) {
-    return <h1>Loading...</h1>;
-  }
   return (
     <div>
-      Total Seller : {allSeller.length}
+      Total User : {allUsers.length}
       <table className="table w-full">
         <thead>
           <tr>
@@ -28,8 +25,8 @@ const AllSeller = () => {
           </tr>
         </thead>
         <tbody>
-          {allSeller.map((seller) => (
-            <AllSellerRow key={seller._id} user={seller} />
+          {allUsers.map((user) => (
+            <AllSellerRow key={user._id} user={user} />
           ))}
         </tbody>
       </table>
@@ -37,4 +34,4 @@ const AllSeller = () => {
   );
 };
 
-export default AllSeller;
+export default AllUsers;

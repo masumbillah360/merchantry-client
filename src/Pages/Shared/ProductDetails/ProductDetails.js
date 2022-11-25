@@ -7,9 +7,9 @@ const ProductDetails = () => {
   const data = useLoaderData();
   console.log(data);
 
-  const handleBooking = (productData) => {
+  const handleWhishlist = (productData) => {
     console.log(productData);
-    const bookingData = {
+    const whishlistData = {
       productId: productData._id,
       userEmail: user.email,
       thumbnail: productData.thumbnail,
@@ -22,7 +22,7 @@ const ProductDetails = () => {
       headers: {
         "content-type": "application/json",
       },
-      body: JSON.stringify(bookingData),
+      body: JSON.stringify(whishlistData),
     })
       .then((res) => res.json())
       .then((data) => console.log(data))
@@ -66,10 +66,10 @@ const ProductDetails = () => {
         <p className="mt-4">Specification : {data.description}</p>
         <div className="mt-7">
           <button
-            onClick={() => handleBooking(data)}
+            onClick={() => handleWhishlist(data)}
             className="btn btn-primary mr-7"
           >
-            Booking
+            Wishlisth
           </button>
           <button className="btn btn-warning">Buy Now</button>
         </div>
