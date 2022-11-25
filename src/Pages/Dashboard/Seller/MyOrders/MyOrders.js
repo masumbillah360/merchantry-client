@@ -1,16 +1,19 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
-import WishlistRow from "./WishlistRow";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../../contexts/AuthProvider";
+import OrderRow from "./OrderRow";
 
 const MyOrders = () => {
+  const { user } = useContext(AuthContext);
+  const email = user?.email;
   const {
-    data: allWishlist = [],
+    data: allOrders = [],
     isLoading,
     refetch,
   } = useQuery({
-    queryKey: ["allWishlist"],
+    queryKey: ["allOrders"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:8000/wishlist");
+      const res = await fetch(`http://localhost:8000/booking?email=${email}`);
       const data = await res.json();
       return data;
     },
@@ -30,8 +33,8 @@ const MyOrders = () => {
           </tr>
         </thead>
         <tbody>
-          {allWishlist.map((order) => (
-            <WishlistRow key={order._id} order={order} refetch={refetch} />
+          {allOrders.map((order) => (
+            <OrderRow key={order._id} order={order} refetch={refetch} />
           ))}
         </tbody>
       </table>

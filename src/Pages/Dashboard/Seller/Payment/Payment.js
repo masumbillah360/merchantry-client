@@ -2,7 +2,7 @@ import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
-import { AuthContext } from "../../../contexts/AuthProvider";
+import { AuthContext } from "../../../../contexts/AuthProvider";
 import CheckoutForm from "./CheckoutForm";
 
 const Payment = () => {

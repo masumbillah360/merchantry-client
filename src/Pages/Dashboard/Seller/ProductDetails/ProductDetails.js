@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useLoaderData } from "react-router-dom";
-import { AuthContext } from "../../../contexts/AuthProvider";
-import BookingModal from "../../Dashboard/Payment/BookingModal";
+import { AuthContext } from "../../../../contexts/AuthProvider";
+import BookingModal from "../Payment/BookingModal";
 
 const ProductDetails = () => {
   const { user } = useContext(AuthContext);

@@ -5,14 +5,15 @@ import AllUsers from "../Pages/AllUsers/AllUsers";
 import CategoryPage from "../Pages/CategoryPage/CategoryPage";
 import AllSeller from "../Pages/Dashboard/AllSeller/AllSeller";
 import Dashboard from "../Pages/Dashboard/Dashboard";
-import MyOrders from "../Pages/Dashboard/MyOrders/MyOrders";
-import MyWishlist from "../Pages/Dashboard/MyWishlist/MyWishlist";
-import Payment from "../Pages/Dashboard/Payment/Payment";
-import UsersOrderHistory from "../Pages/Dashboard/UsersOrderHistory/UsersOrderHistory";
+import MyOrders from "../Pages/Dashboard/Seller/MyOrders/MyOrders";
+import MyWishlist from "../Pages/Dashboard/Seller/MyWishlist/MyWishlist";
+import Payment from "../Pages/Dashboard/Seller/Payment/Payment";
+
+import ProductDetails from "../Pages/Dashboard/Seller/ProductDetails/ProductDetails";
+import UsersOrderHistory from "../Pages/Dashboard/Seller/UsersOrderHistory/UsersOrderHistory";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
-import ProductDetails from "../Pages/Shared/ProductDetails/ProductDetails";
 import Signup from "../Pages/Signup/Signup";
 
 const router = createBrowserRouter([
