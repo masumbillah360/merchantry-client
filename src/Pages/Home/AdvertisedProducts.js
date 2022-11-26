@@ -6,16 +6,23 @@ const AdvertisedProducts = () => {
   const [addvertisedData, setAdvertisedData] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/products")
+      .get("http://localhost:8000/advertised-products")
       .then((res) => setAdvertisedData(res.data));
   }, []);
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-        {addvertisedData.map((data) => (
-          <SingleProduct key={data._id} data={data} />
-        ))}
-      </div>
+      {addvertisedData && (
+        <>
+          <h1 className="text-end text-primary font-extrabold mt-16">
+            Specail Products for You!!!
+          </h1>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
+            {addvertisedData.map((data) => (
+              <SingleProduct key={data._id} data={data} />
+            ))}
+          </div>
+        </>
+      )}
     </div>
   );
 };

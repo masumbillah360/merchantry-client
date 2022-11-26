@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../contexts/AuthProvider";
 
 const SingleProduct = ({ data }) => {
+  console.log(data);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   return (
@@ -55,14 +56,12 @@ const SingleProduct = ({ data }) => {
                 alt=""
               />
               <div>
-                <div className="">
-                  <h1 className="text-lg font-bold">{data?.userName}</h1>
-                  {data?.userStatus && (
-                    <span className="flex justify-start gap-2 items-center">
-                      Verified:
-                      <GoVerified className="text-primary" />
-                    </span>
-                  )}
+                <div className="flex justify-start gap-2 items-center">
+                  <h1 className="text-lg font-bold">{data?.name}</h1>
+                  {data.verify}
+                  <span>
+                    <GoVerified className="text-primary" />
+                  </span>
                 </div>
 
                 {/* {data?.sellerStatus ? (

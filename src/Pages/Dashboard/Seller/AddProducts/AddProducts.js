@@ -1,3 +1,4 @@
+import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
@@ -6,6 +7,15 @@ import { AuthContext } from "../../../../contexts/AuthProvider";
 
 const AddProducts = () => {
   const { user } = useContext(AuthContext);
+  const email = user?.email;
+  const { data: usersInfo = {}, isLoading } = useQuery({
+    queryKey: ["usersInfo"],
+    queryFn: async () => {
+      const res = await fetch(`http://localhost:8000/users/${email}`);
+      const data = await res.json();
+      return data;
+    },
+  });
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
@@ -40,6 +50,7 @@ const AddProducts = () => {
           userName: user?.displayName,
           userEmail: user?.email,
           userThumb: user?.photoURL,
+          verify: usersInfo?.verify,
           name: data.title,
           mobile: data.mobile,
           description: data.description,

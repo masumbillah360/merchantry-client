@@ -12,8 +12,17 @@ const EachProducts = ({ product, refetch }) => {
       })
       .catch((err) => console.log(err));
   };
-  const handleStatusProduct = (id) => {
-    console.log(id);
+  const handleAdvertised = (id) => {
+    const advertisedInfo = {
+      advertised: true,
+    };
+    fetch(`http://localhost:8000/advertised-products?id=${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(advertisedInfo),
+    });
   };
   return (
     <div>
@@ -66,7 +75,7 @@ const EachProducts = ({ product, refetch }) => {
             </button>
             {!product?.status && (
               <button
-                onClick={() => handleStatusProduct(product?._id)}
+                onClick={() => handleAdvertised(product?._id)}
                 className="btn btn-sm btn-primary"
               >
                 Advertised
