@@ -1,7 +1,6 @@
 import axios from "axios";
 import React from "react";
 import toast from "react-hot-toast";
-import { Link } from "react-router-dom";
 
 const OrderHistoryRow = ({ order, refetch }) => {
   const handleDelete = (id) => {
@@ -32,12 +31,7 @@ const OrderHistoryRow = ({ order, refetch }) => {
         >
           Del
         </button>
-        <Link
-          to={`/dashboard/payment/${order._id}`}
-          className="btn btn-primary btn-xs"
-        >
-          Pay
-        </Link>
+        <button className="btn  btn-primary btn-xs">Paid</button>
       </th>
     </tr>
   );

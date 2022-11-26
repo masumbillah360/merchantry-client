@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import { GoVerified } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../contexts/AuthProvider";
 
 const SingleProduct = ({ data }) => {
+  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   return (
     <div className="card card-compact bg-base-100 shadow-md border">
@@ -43,7 +46,36 @@ const SingleProduct = ({ data }) => {
             <span>{data.description}</span>
           )}
         </p>
-        <div className="card-actions justify-end">
+        <div className="card-actions justify-between items-center">
+          {data?.userEmail && (
+            <div className="flex justify-start gap-2 items-center">
+              <img
+                src={data.userThumb}
+                className="rounded-full h-12 w-12 ring ring-primary ring-offset-2"
+                alt=""
+              />
+              <div>
+                <div className="">
+                  <h1 className="text-lg font-bold">{data?.userName}</h1>
+                  {data?.userStatus && (
+                    <span className="flex justify-start gap-2 items-center">
+                      Verified:
+                      <GoVerified className="text-primary" />
+                    </span>
+                  )}
+                </div>
+
+                {/* {data?.sellerStatus ? (
+                  <span>Verified :</span>
+                ) : (
+                  <span className="flex">
+                    Verified:
+                    <TiDeleteOutline className="text-red-500 font-extrabold" />
+                  </span>
+                )} */}
+              </div>
+            </div>
+          )}
           <button
             onClick={() => navigate(`/products/${data._id}`)}
             className="btn btn-primary btn-sm"

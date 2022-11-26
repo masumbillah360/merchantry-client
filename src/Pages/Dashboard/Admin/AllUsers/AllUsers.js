@@ -1,12 +1,12 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import AllSellerRow from "../Dashboard/AllSeller/AllSellerRow";
+import AllSellerRow from "../AllSeller/AllSellerRow";
 
 const AllUsers = () => {
   const { data: allUsers = [], isLoading } = useQuery({
     queryKey: ["allUsers"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:8000/users?userStatus=seller");
+      const res = await fetch("http://localhost:8000/users?userStatus=buyer");
       const data = await res.json();
       return data;
     },

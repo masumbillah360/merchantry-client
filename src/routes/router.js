@@ -1,9 +1,10 @@
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
-import AllUsers from "../Pages/AllUsers/AllUsers";
 import CategoryPage from "../Pages/CategoryPage/CategoryPage";
-import AllSeller from "../Pages/Dashboard/AllSeller/AllSeller";
+import AllSeller from "../Pages/Dashboard/Admin/AllSeller/AllSeller";
+import AllUsers from "../Pages/Dashboard/Admin/AllUsers/AllUsers";
+import ReportedItem from "../Pages/Dashboard/Admin/ReportedItem/ReportedItem";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import AddProducts from "../Pages/Dashboard/Seller/AddProducts/AddProducts";
 import MyBuers from "../Pages/Dashboard/Seller/MyBuyers/MyBuers";
@@ -62,6 +63,7 @@ const router = createBrowserRouter([
       { path: "/dashboard/orderhistory", element: <UsersOrderHistory /> },
       { path: "/dashboard/allseller", element: <AllSeller /> },
       { path: "/dashboard/allusers", element: <AllUsers /> },
+      { path: "/dashboard/reporteditem", element: <ReportedItem /> },
       {
         path: "/dashboard/payment/:id",
         element: <Payment />,

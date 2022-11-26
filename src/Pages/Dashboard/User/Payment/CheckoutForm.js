@@ -42,8 +42,12 @@ const CheckoutForm = ({ bookingData }) => {
         .post("http://localhost:8000/payments", bookingData)
         .then((res) => {
           console.log(res);
-          console.log(res.data.status);
-          toast.success(res.data.data.status);
+          console.log(res?.data?.status);
+          toast.success(res?.data?.data?.status);
+          axios
+            .put(`http://localhost:8000/booking/${bookingData._id}`)
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err));
         })
         .catch((err) => console.log(err));
     }

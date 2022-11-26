@@ -36,7 +36,7 @@ const OrderRow = ({ order, refetch }) => {
           to={`/dashboard/payment/${order._id}`}
           className="btn btn-primary btn-xs"
         >
-          Pay
+          {order.status ? "Paid" : "Pay"}
         </Link>
       </th>
     </tr>
