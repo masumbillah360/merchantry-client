@@ -25,7 +25,9 @@ const MyProducts = () => {
   }
   return (
     <div>
-      sellers all products will be here{myProducts.length}
+      <h4 className="text-xl font-bold">
+        Your total products : <span>{myProducts.length}</span>
+      </h4>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
         {myProducts.map((product) => (
           <EachProducts key={product._id} product={product} refetch={refetch} />

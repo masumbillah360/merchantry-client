@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 
 const EachProducts = ({ product, refetch }) => {
+  console.log(product);
   const handleDeleteProduct = (id) => {
     axios
       .delete(`http://localhost:8000/sellers-product/${id}`)
@@ -37,21 +38,21 @@ const EachProducts = ({ product, refetch }) => {
                 <span className="text-error">Unsold</span>
               )}
             </h2>
-            <span>Used Of Year : {product?.usedYears}</span>
+            <span>Used Of Year : {product?.usedOfYear}</span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
             <span className="font-bold text-primary">
-              Price:{product?.price}
+              Price:{product?.presentPrice}
             </span>
             <span>Condition : {product?.condition}</span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
             <span>Location : {product?.location}</span>
-            <span>Date :{product?.date}</span>
+            <span>Date :{product?.postDate || product?.date}</span>
           </div>
           <p>
-            {product?.description.length > 80 ? (
-              <span>{product?.description.slice(0, 80)}...</span>
+            {product?.description.length > 35 ? (
+              <span>{product?.description.slice(0, 35)}...</span>
             ) : (
               <span>{product?.description}</span>
             )}

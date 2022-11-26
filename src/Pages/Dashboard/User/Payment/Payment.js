@@ -23,7 +23,7 @@ const Payment = () => {
           <h4>Name : {user?.displayName}</h4>
           <h4>Location : {bookingData?.userLocation}</h4>
         </div>
-        <div className="my-10">
+        <div className="my-10 max-w-md mx-auto">
           <CheckoutForm bookingData={bookingData} />
         </div>
       </div>

@@ -16,19 +16,23 @@ const SingleProduct = ({ data }) => {
         <h2 className="text-xl font-bold text-center md:text-start">
           {data.name}
         </h2>
-        <div className="flex justify-between">
+        <div className="grid grid-cols-1 md:grid-cols-2">
           <h2 className="font-bold">Brand : {data.brand}</h2>
           <span>Used Of Year : {data.usedOfYear}</span>
         </div>
-        <div className="flex justify-between">
+        <div className="grid grid-cols-1 md:grid-cols-2">
           <span>Purchase Date:{data.purchaseDate}</span>
           <span>Condition : {data.condition}</span>
         </div>
-        <div className="flex justify-between">
-          <span>Original Price : {data.originalPrice}</span>
-          <span>Present Price : {data.presentPrice}</span>
+        <div className="grid grid-cols-1 md:grid-cols-2">
+          <span className="font-bold text-red-700 line-through">
+            Original Price : {data.originalPrice}
+          </span>
+          <span className="font-bold text-primary">
+            Present Price : {data.presentPrice}
+          </span>
         </div>
-        <div className="flex justify-between">
+        <div className="grid grid-cols-1 md:grid-cols-2">
           <span>Location : {data.location}</span>
           <span>Date :{data.postDate}</span>
         </div>
