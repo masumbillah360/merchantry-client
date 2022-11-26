@@ -25,7 +25,7 @@ const Blog = () => {
       </div>
       <div>
         <div className="border rounded-lg p-4 grid grid-cols-1 gap-7">
-          <h1 className="text-3xl font-bold">Title</h1>
+          <h1 className="text-3xl font-bold">React vs Angular vs Vue</h1>
           <p>
             React can be used as a UI library to render elements, without
             enforcing a specific project structure, and that's why it's not
