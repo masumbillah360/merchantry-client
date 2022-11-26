@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { AuthContext } from "../../../../contexts/AuthProvider";
+import Spinner from "../../../Shared/Spinner/Spinner";
 import OrderHistoryRow from "./OrderHistoryRow";
 
 const UsersOrderHistory = () => {
@@ -20,7 +21,7 @@ const UsersOrderHistory = () => {
   });
   console.log(allHistoryOrder, "history");
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return <Spinner />;
   }
   return (
     <div className="overflow-x-auto w-full">

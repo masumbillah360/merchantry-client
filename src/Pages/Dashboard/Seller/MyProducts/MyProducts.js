@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { AuthContext } from "../../../../contexts/AuthProvider";
+import Spinner from "../../../Shared/Spinner/Spinner";
 import EachProducts from "./EachProducts";
 
 const MyProducts = () => {
@@ -21,7 +22,7 @@ const MyProducts = () => {
     },
   });
   if (isLoading) {
-    return <h1>Loading...</h1>;
+    return <Spinner />;
   }
   return (
     <div>

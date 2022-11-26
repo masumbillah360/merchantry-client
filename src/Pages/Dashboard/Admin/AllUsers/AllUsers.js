@@ -1,5 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
+import Spinner from "../../../Shared/Spinner/Spinner";
 import AllSellerRow from "../AllSeller/AllSellerRow";
 
 const AllUsers = () => {
@@ -12,7 +13,7 @@ const AllUsers = () => {
     },
   });
   if (isLoading) {
-    return <h1 className="text-4xl text-red-500">Loading...</h1>;
+    return <Spinner />;
   }
   return (
     <>

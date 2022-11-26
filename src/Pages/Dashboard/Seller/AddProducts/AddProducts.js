@@ -4,6 +4,7 @@ import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../contexts/AuthProvider";
+import Spinner from "../../../Shared/Spinner/Spinner";
 
 const AddProducts = () => {
   const { user } = useContext(AuthContext);
@@ -76,7 +77,7 @@ const AddProducts = () => {
       .catch((err) => console.log(err));
   };
   if (isLoading) {
-    return <h1>Loading....</h1>;
+    return <Spinner />;
   }
   return (
     <div className=" items-center">

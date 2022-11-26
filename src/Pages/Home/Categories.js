@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import { Link } from "react-router-dom";
+import Spinner from "../Shared/Spinner/Spinner";
 
 const Categories = () => {
   const { data: categories = [], isLoading } = useQuery({
@@ -12,7 +13,7 @@ const Categories = () => {
     },
   });
   if (isLoading) {
-    return <h1 className="text-4xl font-bold text-red-500">Loading</h1>;
+    return <Spinner />;
   }
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
