@@ -60,21 +60,12 @@ const SingleProduct = ({ data }) => {
                     <GoVerified className="text-primary" />
                   </span>
                 </div>
-
-                {/* {data?.sellerStatus ? (
-                  <span>Verified :</span>
-                ) : (
-                  <span className="flex">
-                    Verified:
-                    <TiDeleteOutline className="text-red-500 font-extrabold" />
-                  </span>
-                )} */}
               </div>
             </div>
           )}
           <button
             onClick={() => navigate(`/products/${data._id}`)}
-            className="btn btn-primary btn-sm"
+            className="block w-full rounded bg-primary px-12 py-3 text-sm font-medium text-white shadow hover:bg-blue-600  sm:w-auto"
           >
             Details
           </button>

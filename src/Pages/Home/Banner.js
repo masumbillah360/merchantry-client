@@ -1,26 +1,34 @@
-import React from "react";
+import { Link } from "react-router-dom";
+import Button from "../../components/Button/Button";
+
 const Banner = () => {
   return (
-    <div className="grid grid-cols-12">
-      <div className="col-span-12 md:col-span-12">
-        <div className="">
-          {/* <div className="rounded-full">
-                        <img
-                          src="https://placeimg.com/1000/800/arch"
-                          alt=""
-                          className="w-48 h-48 mx-auto animate-bounce rounded-full hover:animate-spin"
-                        />
-                      </div> */}
-          <div className="my-4">
-            <h1 className="text-5xl md:text-7xl font-extrabold text-blue-500 text-center mb-2">
-              Merchentry
+    <div className="md:mb-10 mt-7">
+      <section className="relative bg-[url(https://i.ibb.co/ysThSmj/HP-Pro-Book-640-G2-a.jpg)] bg-cover bg-center bg-no-repeat">
+        <div className="absolute inset-0 bg-white/75 sm:bg-transparent sm:bg-gradient-to-r sm:from-white/95 sm:to-white/25"></div>
+
+        <div className="relative mx-auto max-w-screen-xl px-4 py-32 sm:px-6 lg:flex lg:h-screen lg:items-center lg:px-8">
+          <div className="max-w-xl text-center sm:text-left">
+            <h1 className="text-3xl font-extrabold sm:text-5xl">
+              Choose your
+              <strong className="block font-extrabold text-primary">
+                Best deal.
+              </strong>
             </h1>
-            <h4 className="font-bold text-center overline">
-              This is buy and sell web page for used Laptops
-            </h4>
+
+            <p className="mt-4 max-w-lg sm:text-xl sm:leading-relaxed">
+              We offer something that is incredible for you. So book now without
+              delay.
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-4 justify-center md:justify-start text-center">
+              <Link to="/">
+                <Button>Let's Start</Button>
+              </Link>
+            </div>
           </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

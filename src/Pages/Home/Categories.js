@@ -20,9 +20,10 @@ const Categories = () => {
         <Link
           key={category._id}
           to={`/category/${category.cat_id}`}
-          className="card border shadow-md"
+          className="card border shadow-md bg-slate-100"
         >
           <div className="card-body items-center text-center">
+            <img src={category?.thumbnail} alt="" className="h-14" />
             <h2 className="card-title">{category.brand}</h2>
             <p>Find Your Favorite used apply </p>
           </div>

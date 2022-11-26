@@ -2,10 +2,12 @@ import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({ bookingData }) => {
   const [cardError, setCardError] = useState(null);
   const [clientSecrete, setClientSecrete] = useState("");
+  const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
   useEffect(() => {
@@ -41,13 +43,12 @@ const CheckoutForm = ({ bookingData }) => {
       axios
         .post("http://localhost:8000/payments", bookingData)
         .then((res) => {
-          console.log(res);
-          console.log(res?.data?.status);
-          toast.success(res?.data?.data?.status);
           axios
             .put(`http://localhost:8000/booking/${bookingData._id}`)
             .then((res) => console.log(res))
             .catch((err) => console.log(err));
+          toast.success("Successfully Paid");
+          navigate("/dashboard/myorders");
         })
         .catch((err) => console.log(err));
     }

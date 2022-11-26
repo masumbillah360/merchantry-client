@@ -4,6 +4,7 @@ import SingleProduct from "../Shared/SignleProduct.js/SingleProduct";
 
 const AdvertisedProducts = () => {
   const [addvertisedData, setAdvertisedData] = useState([]);
+  console.log(addvertisedData);
   useEffect(() => {
     axios
       .get("http://localhost:8000/advertised-products")
@@ -11,8 +12,8 @@ const AdvertisedProducts = () => {
   }, []);
   return (
     <div>
-      {addvertisedData && (
-        <>
+      {addvertisedData.length > 0 && (
+        <div>
           <h1 className="text-end text-primary font-extrabold mt-16">
             Specail Products for You!!!
           </h1>
@@ -21,7 +22,7 @@ const AdvertisedProducts = () => {
               <SingleProduct key={data._id} data={data} />
             ))}
           </div>
-        </>
+        </div>
       )}
     </div>
   );

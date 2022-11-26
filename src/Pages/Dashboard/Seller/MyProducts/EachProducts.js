@@ -22,7 +22,13 @@ const EachProducts = ({ product, refetch }) => {
         "content-type": "application/json",
       },
       body: JSON.stringify(advertisedInfo),
-    });
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        refetch();
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <div>
@@ -76,9 +82,11 @@ const EachProducts = ({ product, refetch }) => {
             {!product?.status && (
               <button
                 onClick={() => handleAdvertised(product?._id)}
-                className="btn btn-sm btn-primary"
+                className={`btn btn-sm btn-primary ${
+                  product?.advertised ? "btn-disabled" : ""
+                }`}
               >
-                Advertised
+                {product?.advertised ? "Advertised Successfully" : "Advertise"}
               </button>
             )}
           </div>
