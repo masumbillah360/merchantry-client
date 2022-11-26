@@ -11,6 +11,9 @@ const EachProducts = ({ product, refetch }) => {
       })
       .catch((err) => console.log(err));
   };
+  const handleStatusProduct = (id) => {
+    console.log(id);
+  };
   return (
     <div>
       <div className="card card-compact bg-base-100 shadow-md border">
@@ -27,12 +30,19 @@ const EachProducts = ({ product, refetch }) => {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
             <h2 className="font-bold">
-              Status : {product?.status ? "Sold" : "Unsold"}
+              Status :
+              {product?.status ? (
+                <span className="text-success">Sold</span>
+              ) : (
+                <span className="text-error">Unsold</span>
+              )}
             </h2>
             <span>Used Of Year : {product?.usedYears}</span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
-            <span>Price:{product?.price}</span>
+            <span className="font-bold text-primary">
+              Price:{product?.price}
+            </span>
             <span>Condition : {product?.condition}</span>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-1">
@@ -53,7 +63,14 @@ const EachProducts = ({ product, refetch }) => {
             >
               Delete
             </button>
-            <button className="btn btn-sm btn-primary">Advertised</button>
+            {!product?.status && (
+              <button
+                onClick={() => handleStatusProduct(product?._id)}
+                className="btn btn-sm btn-primary"
+              >
+                Advertised
+              </button>
+            )}
           </div>
         </div>
       </div>

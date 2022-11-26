@@ -30,23 +30,24 @@ const AddProducts = () => {
     )
       .then((res) => res.json())
       .then((image) => {
-        console.log(image.data.url);
+        console.log(image?.data?.url);
         setLoading(false);
         const time = new Date().toDateString();
         const productsInfo = {
           thumbnail: image?.data?.url,
-          category: data.category,
+          cat_id: data.category,
+          brand: data.category,
           userName: user?.displayName,
           userEmail: user?.email,
           userThumb: user?.photoURL,
-          title: data.title,
+          name: data.title,
           mobile: data.mobile,
           description: data.description,
           location: data.location,
-          price: data.price,
+          presentPrice: data.price,
           condition: data.productCondition,
-          usedYears: data.usedYears,
-          date: time,
+          usedOfYear: data.usedYears,
+          postDate: time,
         };
         console.log(productsInfo);
         axios
