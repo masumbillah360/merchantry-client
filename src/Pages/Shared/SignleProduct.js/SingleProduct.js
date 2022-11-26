@@ -1,11 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import { GoVerified } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../../contexts/AuthProvider";
 
 const SingleProduct = ({ data }) => {
   console.log(data);
-  const { user } = useContext(AuthContext);
   const navigate = useNavigate();
   return (
     <div className="card card-compact bg-base-100 shadow-md border">

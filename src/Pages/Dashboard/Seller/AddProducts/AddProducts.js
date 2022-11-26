@@ -75,6 +75,9 @@ const AddProducts = () => {
       })
       .catch((err) => console.log(err));
   };
+  if (isLoading) {
+    return <h1>Loading....</h1>;
+  }
   return (
     <div className=" items-center">
       <div className="card flex-shrink-0 shadow-xl">
