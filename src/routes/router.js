@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import DashboardLayout from "../Layout/DashboardLayout";
 import Main from "../Layout/Main";
+import Blog from "../Pages/Blog/Blog";
 import CategoryPage from "../Pages/CategoryPage/CategoryPage";
 import AllSeller from "../Pages/Dashboard/Admin/AllSeller/AllSeller";
 import AllUsers from "../Pages/Dashboard/Admin/AllUsers/AllUsers";
@@ -37,6 +38,10 @@ const router = createBrowserRouter([
       {
         path: "/signup",
         element: <Signup />,
+      },
+      {
+        path: "/blog",
+        element: <Blog />,
       },
       {
         path: "/products/:id",

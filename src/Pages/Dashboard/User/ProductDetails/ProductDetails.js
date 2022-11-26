@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import toast from "react-hot-toast";
 import { useLoaderData } from "react-router-dom";
 import { AuthContext } from "../../../../contexts/AuthProvider";
 import BookingModal from "../Payment/BookingModal";
@@ -26,7 +27,10 @@ const ProductDetails = () => {
       body: JSON.stringify(bookingInfo),
     })
       .then((res) => res.json())
-      .then((data) => console.log(data))
+      .then((data) => {
+        console.log(data);
+        toast.success("Successfully Added");
+      })
       .catch((err) => console.log(err));
   };
   return (
