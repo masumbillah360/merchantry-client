@@ -1,8 +1,25 @@
-# Getting Started with Create React App
+# Getting Started with Marchentry
+
+### Resale and used products buy & sell app.
+
+# [Live Link]() || [Client Site Repo]() || [Server Site]()
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+## Available Feature
+
+- Easy user/seller account creation.
+- Add, Buy and manage products.
+- Admin Dashboard.
+- Payment Option.
+- Authentication Option.
+
+## Technology Used
+
+- reactJs, react-router.
+- mongodb,firebase.
+- Tailwindcss & Daisy UI.
+- expressJs for backend.
 
 In the project directory, you can run:
 
