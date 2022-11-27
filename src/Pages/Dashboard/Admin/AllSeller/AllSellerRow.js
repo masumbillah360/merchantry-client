@@ -14,6 +14,7 @@ const AllSellerRow = ({ user }) => {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
       },
       body: JSON.stringify(userStatus),
     })

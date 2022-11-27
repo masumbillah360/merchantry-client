@@ -5,10 +5,16 @@ import { Link } from "react-router-dom";
 
 const OrderRow = ({ order, refetch }) => {
   const handleDelete = (id) => {
-    axios.delete(`http://localhost:8000/booking/${id}`).then(() => {
-      toast.success("Successfylly deleted");
-      refetch();
-    });
+    axios
+      .delete(`http://localhost:8000/booking/${id}`, {
+        headers: {
+          authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
+        },
+      })
+      .then(() => {
+        toast.success("Successfylly deleted");
+        refetch();
+      });
   };
   return (
     <tr className="hover">

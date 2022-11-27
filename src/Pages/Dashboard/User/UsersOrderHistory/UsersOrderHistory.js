@@ -14,7 +14,11 @@ const UsersOrderHistory = () => {
   } = useQuery({
     queryKey: ["allHistoryOrder"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:8000/payments?email=${email}`);
+      const res = await fetch(`http://localhost:8000/payments?email=${email}`, {
+        headers: {
+          authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
+        },
+      });
       const data = await res.json();
       return data;
     },

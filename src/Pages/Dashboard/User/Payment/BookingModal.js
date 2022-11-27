@@ -18,7 +18,11 @@ const BookingModal = ({ bookingData, setBookingData }) => {
       userEmail: bookingData?.userEmail,
     };
     axios
-      .post("http://localhost:8000/booking", bookingInfo)
+      .post("http://localhost:8000/booking", bookingInfo, {
+        headers: {
+          authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
+        },
+      })
       .then((res) => {
         console.log(res);
         setBookingData(null);

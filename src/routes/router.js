@@ -78,7 +78,13 @@ const router = createBrowserRouter([
         path: "/dashboard/payment/:id",
         element: <Payment />,
         loader: ({ params }) =>
-          fetch(`http://localhost:8000/booking/${params.id}`),
+          fetch(`http://localhost:8000/booking/${params.id}`, {
+            headers: {
+              authorisation: `bearer ${localStorage.getItem(
+                "merchantry-token"
+              )}`,
+            },
+          }),
       },
       { path: "/dashboard/addproduct", element: <AddProducts /> },
       { path: "/dashboard/myproducts", element: <MyProducts /> },

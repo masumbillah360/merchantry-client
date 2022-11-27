@@ -23,6 +23,7 @@ const ProductDetails = () => {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
       },
       body: JSON.stringify(bookingInfo),
     })

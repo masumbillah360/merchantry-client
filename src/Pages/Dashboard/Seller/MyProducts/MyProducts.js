@@ -15,7 +15,12 @@ const MyProducts = () => {
     queryKey: ["myProducts"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:8000/sellers-product?email=${email}`
+        `http://localhost:8000/sellers-product?email=${email}`,
+        {
+          headers: {
+            authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
+          },
+        }
       );
       const data = await res.json();
       return data;

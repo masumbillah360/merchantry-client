@@ -1,6 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
-import { serverUrl } from "../../../../url/serverUrl";
 import Spinner from "../../../Shared/Spinner/Spinner";
 import WishlistRow from "./WishlistRow";
 
@@ -12,7 +11,7 @@ const MyWishlist = () => {
   } = useQuery({
     queryKey: ["allWishlist"],
     queryFn: async () => {
-      const res = await fetch(`${serverUrl}/wishlist`, {
+      const res = await fetch(`http://localhost:8000/wishlist`, {
         headers: {
           authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
         },

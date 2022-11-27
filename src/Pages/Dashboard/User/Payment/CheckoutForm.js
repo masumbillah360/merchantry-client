@@ -15,6 +15,7 @@ const CheckoutForm = ({ bookingData }) => {
       method: "POST",
       headers: {
         "content-type": "application/json",
+        authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
       },
       body: JSON.stringify(bookingData),
     })
@@ -41,10 +42,20 @@ const CheckoutForm = ({ bookingData }) => {
       console.log(paymentMethod);
       bookingData.transactionId = clientSecrete;
       axios
-        .post("http://localhost:8000/payments", bookingData)
+        .post("http://localhost:8000/payments", bookingData, {
+          headers: {
+            authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
+          },
+        })
         .then((res) => {
           axios
-            .put(`http://localhost:8000/booking/${bookingData._id}`)
+            .put(`http://localhost:8000/booking/${bookingData._id}`, {
+              headers: {
+                authorisation: `bearer ${localStorage.getItem(
+                  "merchantry-token"
+                )}`,
+              },
+            })
             .then((res) => console.log(res))
             .catch((err) => console.log(err));
           toast.success("Successfully Paid");

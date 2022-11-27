@@ -5,7 +5,11 @@ const EachProducts = ({ product, refetch }) => {
   console.log(product);
   const handleDeleteProduct = (id) => {
     axios
-      .delete(`http://localhost:8000/sellers-product/${id}`)
+      .delete(`http://localhost:8000/sellers-product/${id}`, {
+        headers: {
+          authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
+        },
+      })
       .then((res) => {
         console.log(res);
         refetch();
@@ -20,6 +24,7 @@ const EachProducts = ({ product, refetch }) => {
       method: "PUT",
       headers: {
         "content-type": "application/json",
+        authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
       },
       body: JSON.stringify(advertisedInfo),
     })

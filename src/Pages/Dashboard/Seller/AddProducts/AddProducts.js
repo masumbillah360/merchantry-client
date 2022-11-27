@@ -12,7 +12,11 @@ const AddProducts = () => {
   const { data: usersInfo = {}, isLoading } = useQuery({
     queryKey: ["usersInfo"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:8000/users/${email}`);
+      const res = await fetch(`http://localhost:8000/users/${email}`, {
+        headers: {
+          authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
+        },
+      });
       const data = await res.json();
       return data;
     },
@@ -63,7 +67,13 @@ const AddProducts = () => {
         };
         console.log(productsInfo);
         axios
-          .post("http://localhost:8000/sellers-product", productsInfo)
+          .post("http://localhost:8000/sellers-product", productsInfo, {
+            headers: {
+              authorisation: `bearer ${localStorage.getItem(
+                "merchantry-token"
+              )}`,
+            },
+          })
           .then((res) => {
             console.log(res);
             navigate("/dashboard/myproducts");

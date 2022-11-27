@@ -7,7 +7,11 @@ const AllSeller = () => {
   const { data: allSeller = [], isLoading } = useQuery({
     queryKey: ["allSeller"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:8000/users?userStatus=seller");
+      const res = await fetch("http://localhost:8000/users?userStatus=seller", {
+        headers: {
+          authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
+        },
+      });
       const data = await res.json();
       return data;
     },

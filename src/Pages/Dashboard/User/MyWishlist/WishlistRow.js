@@ -8,7 +8,11 @@ const WishlisthRow = ({ order, refetch }) => {
   const handleDelete = (id) => {
     console.log(id);
     axios
-      .delete(`http://localhost:8000/wishlist/${id}`)
+      .delete(`http://localhost:8000/wishlist/${id}`, {
+        headers: {
+          authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
+        },
+      })
       .then(() => {
         toast.success("Successfylly Deleted");
         refetch();

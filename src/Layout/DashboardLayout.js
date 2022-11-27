@@ -12,7 +12,11 @@ const DashboardLayout = () => {
   console.log(email);
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/users/${email}`)
+      .get(`http://localhost:8000/users/${email}`, {
+        headers: {
+          authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
+        },
+      })
       .then((res) => setUserCategory(res.data.status));
   }, [email]);
   const navLink = (
