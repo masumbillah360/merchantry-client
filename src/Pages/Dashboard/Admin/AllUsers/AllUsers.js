@@ -35,7 +35,7 @@ const AllUsers = () => {
           </thead>
           <tbody>
             {allUsers.map((user) => (
-              <AllSellerRow key={user._id} user={user} />
+              <AllSellerRow key={user._id} userInfo={user} />
             ))}
           </tbody>
         </table>
