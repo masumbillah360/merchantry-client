@@ -28,14 +28,14 @@ const AllSeller = () => {
             <tr>
               <th>Name</th>
               <th>Email</th>
-              <th>Status</th>
+              <th>Category</th>
               <th>Verified</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
             {allSeller.map((seller) => (
-              <AllSellerRow key={seller._id} user={seller} />
+              <AllSellerRow key={seller._id} userInfo={seller} />
             ))}
           </tbody>
         </table>

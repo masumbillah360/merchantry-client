@@ -1,14 +1,14 @@
-import React from "react";
-import { GoUnverified } from "react-icons/go";
+import React, { useState } from "react";
+import toast from "react-hot-toast";
 
-const AllSellerRow = ({ user }) => {
-  const handlePendingVerify = (email) => {
-    console.log(email);
+const AllSellerRow = ({ userInfo }) => {
+  console.log(userInfo);
+  const [userVerifyStatus, setUserVerifyStatus] = useState("");
+  const handleVerify = (email) => {
     const userStatus = {
       verifyStatus: "Verified",
       verify: true,
     };
-    console.log(userStatus);
 
     fetch(`http://localhost:8000/users?email=${email}`, {
       method: "PUT",
@@ -18,32 +18,43 @@ const AllSellerRow = ({ user }) => {
       },
       body: JSON.stringify(userStatus),
     })
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        if (res.ok) {
+          toast.success("Your Request Has Pending, Please Wait");
+          setUserVerifyStatus("Verified");
+        }
+      })
       .catch((err) => console.log(err));
+  };
+  const handleSuccessToast = () => {
+    toast.success("Users Already Verified");
   };
   return (
     <tr className="hover">
-      <td>{user?.name}</td>
-      <td>{user?.email}</td>
-      <td>{user?.status}</td>
-      <td className="flex flex-col justify-center items-center">
-        {user?.verify ? (
-          <span className="btn btn-success">Verified</span>
-        ) : (
-          <GoUnverified className="text-red-500" />
-        )}
-        {user?.verifyStatus === "Pending" && (
+      <td>{userInfo?.name}</td>
+      <td>{userInfo?.email}</td>
+      <td>{userInfo?.status}</td>
+      <td className="flex flex-col justify-start items-center">
+        {userInfo?.verifyStatus === "Verified" ? (
           <button
-            onClick={() => handlePendingVerify(user?.email)}
+            onClick={handleSuccessToast}
+            className="btn btn-success btn-xs "
+          >
+            Verified
+          </button>
+        ) : (
+          <button
+            onClick={() => handleVerify(userInfo?.email)}
             className="btn btn-primary btn-xs"
           >
-            {user?.verifyStatus}
+            {userVerifyStatus || "Verify Account"}
           </button>
         )}
       </td>
       <th>
-        <button className="btn btn-ghost btn-xs">Update</button>
-        <button className="btn btn-ghost btn-xs">Del</button>
+        <button className="btn btn-primary btn-xs mr-2">Update</button>
+        <button className="btn btn-error btn-xs">Del</button>
       </th>
     </tr>
   );
