@@ -1,9 +1,7 @@
-import React, { useState } from "react";
+import React from "react";
 import toast from "react-hot-toast";
 
-const AllSellerRow = ({ userInfo }) => {
-  console.log(userInfo);
-  const [userVerifyStatus, setUserVerifyStatus] = useState("");
+const AllSellerRow = ({ userInfo, refetch }) => {
   const handleVerify = (email) => {
     const userStatus = {
       verifyStatus: "Verified",
@@ -21,8 +19,8 @@ const AllSellerRow = ({ userInfo }) => {
       .then((res) => {
         console.log(res);
         if (res.ok) {
-          toast.success("Your Request Has Pending, Please Wait");
-          setUserVerifyStatus("Verified");
+          toast.success("Successfully Verified");
+          refetch();
         }
       })
       .catch((err) => console.log(err));
@@ -48,7 +46,7 @@ const AllSellerRow = ({ userInfo }) => {
             onClick={() => handleVerify(userInfo?.email)}
             className="btn btn-primary btn-xs"
           >
-            {userVerifyStatus || "Verify Account"}
+            {userInfo?.verifyStatus ? userInfo?.verifyStatus : "Verify Account"}
           </button>
         )}
       </td>

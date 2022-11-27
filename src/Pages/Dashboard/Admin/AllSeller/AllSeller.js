@@ -4,7 +4,11 @@ import Spinner from "../../../Shared/Spinner/Spinner";
 import AllSellerRow from "./AllSellerRow";
 
 const AllSeller = () => {
-  const { data: allSeller = [], isLoading } = useQuery({
+  const {
+    data: allSeller = [],
+    isLoading,
+    refetch,
+  } = useQuery({
     queryKey: ["allSeller"],
     queryFn: async () => {
       const res = await fetch("http://localhost:8000/users?userStatus=seller", {
@@ -35,7 +39,11 @@ const AllSeller = () => {
           </thead>
           <tbody>
             {allSeller.map((seller) => (
-              <AllSellerRow key={seller._id} userInfo={seller} />
+              <AllSellerRow
+                key={seller._id}
+                userInfo={seller}
+                refetch={refetch}
+              />
             ))}
           </tbody>
         </table>
