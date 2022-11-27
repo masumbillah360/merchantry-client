@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React, { useContext } from "react";
 import { AuthContext } from "../../../../contexts/AuthProvider";
+import { serverUrl } from "../../../../url/serverUrl";
 import Spinner from "../../../Shared/Spinner/Spinner";
 import OrderRow from "./OrderRow";
 
@@ -14,7 +15,11 @@ const MyOrders = () => {
   } = useQuery({
     queryKey: ["allOrders"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:8000/booking?email=${email}`);
+      const res = await fetch(`${serverUrl}/booking?email=${email}`, {
+        headers: {
+          authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
+        },
+      });
       const data = await res.json();
       return data;
     },
