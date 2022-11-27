@@ -1,3 +1,4 @@
+import axios from "axios";
 import React from "react";
 import toast from "react-hot-toast";
 
@@ -28,6 +29,18 @@ const AllSellerRow = ({ userInfo, refetch }) => {
   const handleSuccessToast = () => {
     toast.success("Users Already Verified");
   };
+  const handleDeleteUser = (id) => {
+    axios
+      .delete(`http://localhost:8000/users/${id}`, {
+        headers: {
+          authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
+        },
+      })
+      .then((res) => {
+        toast.success("Successfully Deleted");
+        refetch();
+      });
+  };
   return (
     <tr className="hover">
       <td>{userInfo?.name}</td>
@@ -52,7 +65,12 @@ const AllSellerRow = ({ userInfo, refetch }) => {
       </td>
       <th>
         <button className="btn btn-primary btn-xs mr-2">Update</button>
-        <button className="btn btn-error btn-xs">Del</button>
+        <button
+          onClick={() => handleDeleteUser(userInfo?._id)}
+          className="btn btn-error btn-xs"
+        >
+          Del
+        </button>
       </th>
     </tr>
   );
