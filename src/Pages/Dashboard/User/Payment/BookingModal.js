@@ -1,7 +1,9 @@
 import axios from "axios";
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const BookingModal = ({ bookingData, setBookingData }) => {
+  const navigate = useNavigate();
   const handleBooking = (e) => {
     e.preventDefault();
     const bookingInfo = {
@@ -20,6 +22,7 @@ const BookingModal = ({ bookingData, setBookingData }) => {
       .then((res) => {
         console.log(res);
         setBookingData(null);
+        navigate("/dashboard/myorders");
       })
       .catch((err) => console.log(err));
   };

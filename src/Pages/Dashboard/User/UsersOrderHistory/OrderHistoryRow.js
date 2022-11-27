@@ -3,11 +3,16 @@ import React from "react";
 import toast from "react-hot-toast";
 
 const OrderHistoryRow = ({ order, refetch }) => {
-  const handleDelete = (id) => {
-    axios.delete(`http://localhost:8000/booking/${id}`).then(() => {
-      toast.success("Successfylly deleted");
-      refetch();
-    });
+  const handleDelete = (transactionId) => {
+    console.log(transactionId);
+    axios
+      .delete(`http://localhost:8000/payments/${transactionId}`)
+      .then((data) => {
+        toast.success("Successfylly deleted");
+        console.log(data);
+        refetch();
+      })
+      .catch((err) => console.log(err));
   };
   return (
     <tr className="hover">
@@ -26,7 +31,7 @@ const OrderHistoryRow = ({ order, refetch }) => {
       <td>{order?.price}</td>
       <th>
         <button
-          onClick={() => handleDelete(order._id)}
+          onClick={() => handleDelete(order?.transactionId)}
           className="btn btn-error btn-xs mr-4"
         >
           Del

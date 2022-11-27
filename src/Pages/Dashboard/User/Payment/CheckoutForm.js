@@ -76,7 +76,7 @@ const CheckoutForm = ({ bookingData }) => {
           <button
             type="submit"
             className="btn mt-7 btn-primary btn-sm"
-            disabled={!stripe}
+            disabled={!stripe || !clientSecrete}
           >
             Pay
           </button>

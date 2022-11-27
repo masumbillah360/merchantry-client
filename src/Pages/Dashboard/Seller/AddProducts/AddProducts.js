@@ -92,8 +92,6 @@ const AddProducts = () => {
               type="text"
               {...register("title", {
                 required: "Enter Product Title",
-                minLength: "4",
-                maxLength: "16",
               })}
               placeholder="Product Title"
               className="input input-bordered"
