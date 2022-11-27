@@ -8,12 +8,20 @@ const SingleProduct = ({ data }) => {
     <div className="card card-compact  bg-base-100 shadow-md border">
       <figure>
         <img
-          className="p-3 w-full"
+          className="p-2 w-full max-h-80 rounded-2xl"
           src={data.thumbnail}
           alt="Product Thumbnail"
         />
       </figure>
       <div className="card-body">
+        <div className="grid grid-cols-1">
+          <span className="font-bold text-primary text-2xl">
+            Present Price : {data.presentPrice}
+          </span>
+          <span className="font-bold text-red-700 line-through">
+            Original Price : {data.originalPrice}
+          </span>
+        </div>
         <h2 className="text-xl font-bold text-center md:text-start">
           {data.name}
         </h2>
@@ -25,14 +33,7 @@ const SingleProduct = ({ data }) => {
           <span>Purchase Date:{data.purchaseDate}</span>
           <span>Condition : {data.condition}</span>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2">
-          <span className="font-bold text-red-700 line-through">
-            Original Price : {data.originalPrice}
-          </span>
-          <span className="font-bold text-primary">
-            Present Price : {data.presentPrice}
-          </span>
-        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2">
           <span>Location : {data.location}</span>
           <span>Date :{data.postDate}</span>
