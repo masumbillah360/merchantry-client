@@ -15,10 +15,10 @@ const SingleProduct = ({ data }) => {
       </figure>
       <div className="card-body">
         <div className="grid grid-cols-1">
-          <span className="font-bold text-primary text-2xl">
+          <span className="font-bold text-rose-600 text-2xl">
             Present Price : {data.presentPrice} $
           </span>
-          <span className="font-bold text-red-700 line-through">
+          <span className=" line-through">
             Original Price : {data.originalPrice} $
           </span>
         </div>

@@ -61,6 +61,7 @@ const AddProducts = () => {
           description: data.description,
           location: data.location,
           presentPrice: data.price,
+          originalPrice: data.originalPrice,
           condition: data.productCondition,
           usedOfYear: data.usedYears,
           postDate: time,
@@ -109,37 +110,57 @@ const AddProducts = () => {
             {errors.title && <span>{errors.title.message}</span>}
           </div>
 
-          <div className="flex flex-col md:flex-row justify-between gap-4">
-            <div className="form-control w-full">
-              <label className="label">
-                <span className="label-text">Price</span>
-              </label>
-              <input
-                required
-                type="text"
-                placeholder="Price"
-                {...register("price", {
-                  required: "Enter Product Price",
-                })}
-                className="input input-bordered"
-              />
-              {errors.price && <span>{errors.price.message}</span>}
-            </div>
-
-            <div className="form-control w-full">
-              <label className="label">
-                <span className="label-text">Location</span>
-              </label>
-              <input
-                required
-                type="text"
-                {...register("location", {
-                  required: "Enter Your Mobile Number",
-                })}
-                placeholder="Location"
-                className="input input-bordered"
-              />
-              {errors.location && <span>{errors.location.message}</span>}
+          <div className="flex flex-col md:flex-row flex-wrap justify-between gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 justify-between gap-3 w-full">
+              <div className="flex flex-col md:flex-row gap-4">
+                <div className="form-control w-full">
+                  <label className="label">
+                    <span className="label-text">Price</span>
+                  </label>
+                  <input
+                    required
+                    type="text"
+                    placeholder="Price"
+                    {...register("price", {
+                      required: "Enter Product Price",
+                    })}
+                    className="input input-bordered"
+                  />
+                  {errors.price && <span>{errors.price.message}</span>}
+                </div>
+                <div className="form-control w-full">
+                  <label className="label">
+                    <span className="label-text">Original Price</span>
+                  </label>
+                  <input
+                    required
+                    type="text"
+                    placeholder="Price"
+                    {...register("originalPrice", {
+                      required: "Enter Product Price",
+                    })}
+                    className="input input-bordered"
+                  />
+                  {errors.originalPrice && (
+                    <span>{errors.originalPrice.message}</span>
+                  )}
+                </div>
+              </div>
+              <div className="form-control w-full">
+                <label className="label">
+                  <span className="label-text">Used Years</span>
+                </label>
+                <input
+                  required
+                  type="text"
+                  {...register("usedYears", {
+                    required: "How many years of use ?",
+                  })}
+                  placeholder="How many years of use "
+                  className="input input-bordered"
+                />
+                {errors.mobile && <span>{errors.mobile.message}</span>}
+              </div>
             </div>
           </div>
 
@@ -205,7 +226,22 @@ const AddProducts = () => {
               {errors.mobile && <span>{errors.mobile.message}</span>}
             </div>
           </div>
-          <div className="flex flex-col md:flex-row justify-between gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 justify-between gap-4">
+            <div className="form-control w-full">
+              <label className="label">
+                <span className="label-text">Location</span>
+              </label>
+              <input
+                required
+                type="text"
+                {...register("location", {
+                  required: "Enter Your Mobile Number",
+                })}
+                placeholder="Location"
+                className="input input-bordered"
+              />
+              {errors.location && <span>{errors.location.message}</span>}
+            </div>
             <div className="form-control w-full">
               <label className="label">
                 <span className="label-text">Photo</span>
@@ -216,22 +252,6 @@ const AddProducts = () => {
                 className="file-input file-input-bordered file-input-primary w-full"
               />
               {errors.image && <span>{errors.image.message}</span>}
-            </div>
-
-            <div className="form-control w-full">
-              <label className="label">
-                <span className="label-text">Used Years</span>
-              </label>
-              <input
-                required
-                type="text"
-                {...register("usedYears", {
-                  required: "How many years of use ?",
-                })}
-                placeholder="How many years of use "
-                className="input input-bordered"
-              />
-              {errors.mobile && <span>{errors.mobile.message}</span>}
             </div>
           </div>
           <div className="form-control">
@@ -244,7 +264,7 @@ const AddProducts = () => {
               })}
               className="textarea textarea-bordered"
               required
-              placeholder="Bio"
+              placeholder="Add products description here..."
             ></textarea>
             {errors.description && <span>{errors.description.message}</span>}
           </div>
