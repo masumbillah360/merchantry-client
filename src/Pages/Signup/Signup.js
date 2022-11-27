@@ -6,7 +6,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Signup = () => {
-  const { handleCreateuser, handleUpdateUser } = useContext(AuthContext);
+  const { handleCreateuser, handleUpdateUser, handleGoogleLogin } =
+    useContext(AuthContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
 
@@ -55,6 +56,24 @@ const Signup = () => {
               .catch((err) => console.log(err));
           })
           .catch((err) => console.log(err));
+      })
+      .catch((err) => console.log(err));
+  };
+  const handleSocialLogin = () => {
+    handleGoogleLogin()
+      .then((result) => {
+        console.log(result.user);
+        axios
+          .post("/http://localhost:8000/jwt", {
+            headers: {
+              authorisation: `bearer ${localStorage.getItem(
+                "merchantry-token"
+              )}`,
+            },
+          })
+          .then((res) => {
+            localStorage.setItem("merchantry-token", res.data.token);
+          });
       })
       .catch((err) => console.log(err));
   };
@@ -158,12 +177,12 @@ const Signup = () => {
               {loading ? "Loading" : "SignUp"}
             </button>
           </div>
-          <div className="form-control mt-7">
-            <button className="btn btn-primary">
-              Login With Google <FcGoogle className="ml-2" />{" "}
-            </button>
-          </div>
         </form>
+        <div onClick={handleSocialLogin} className="form-control mt-7">
+          <button className="btn btn-primary">
+            Login With Google <FcGoogle className="ml-2" />{" "}
+          </button>
+        </div>
       </div>
     </div>
   );

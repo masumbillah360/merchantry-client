@@ -104,7 +104,7 @@ const Login = () => {
             />
             {errors.password && <span>{errors.password.message}</span>}
             <label className="label">
-              <Link to="/login" className="label-text-alt link link-hover">
+              <Link to="/signup" className="label-text-alt link link-hover">
                 Don't have an account ?
                 <span className="text-primary">Register Now</span>
               </Link>
