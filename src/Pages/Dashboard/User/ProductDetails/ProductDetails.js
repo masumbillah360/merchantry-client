@@ -7,6 +7,7 @@ import BookingModal from "../Payment/BookingModal";
 const ProductDetails = () => {
   const { user } = useContext(AuthContext);
   const data = useLoaderData();
+  console.log(data);
   const [bookingData, setBookingData] = useState(null);
   const bookingInfo = {
     productId: data._id,
@@ -50,9 +51,7 @@ const ProductDetails = () => {
           <h2 className="font-bold text-2xl line-through text-red-400">
             Original Price : {data.originalPrice} $
           </h2>
-          <h2 className="text-xl font-bold text-center md:text-start">
-            Name : {data.name}
-          </h2>
+          <h2 className="text-xl font-bold">Model : {data.name}</h2>
           <h2 className="font-bold">Brand : {data.brand}</h2>
           <div className="grid grid-cols-2 justify-between bg-base-200 font-bold">
             <span>Purchase Date:{data.purchaseDate}</span>
@@ -62,13 +61,8 @@ const ProductDetails = () => {
             <span>Used Of Year : {data.usedOfYear}</span>
             <span>Post Date :{data.postDate}</span>
           </div>
-          <div className="grid grid-cols-2 justify-between bg-base-200 m-0 p-0">
+          <div className="grid grid-cols-2 justify-between font-bold bg-base-200 m-0 p-0">
             <span>Location : {data.location}</span>
-            <span>Post Date :{data.postDate}</span>
-          </div>
-          <div className="grid grid-cols-2 justify-between">
-            <span>Used Of Year : {data.usedOfYear}</span>
-            <span>Post Date :{data.postDate}</span>
           </div>
           <p className="mt-4">Specification : {data.description}</p>
           <div className="mt-7">
