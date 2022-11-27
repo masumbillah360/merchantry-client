@@ -5,10 +5,10 @@ import { useNavigate } from "react-router-dom";
 const SingleProduct = ({ data }) => {
   const navigate = useNavigate();
   return (
-    <div className="card card-compact bg-base-100 shadow-md border">
+    <div className="card card-compact  bg-base-100 shadow-md border">
       <figure>
         <img
-          className="p-3 h-48"
+          className="p-3 w-full"
           src={data.thumbnail}
           alt="Product Thumbnail"
         />
@@ -38,19 +38,19 @@ const SingleProduct = ({ data }) => {
           <span>Date :{data.postDate}</span>
         </div>
         <p>
-          {data.description.length > 80 ? (
-            <span>{data.description.slice(0, 80)}...</span>
+          {data.description.length > 70 ? (
+            <span>{data.description.slice(0, 70)}...</span>
           ) : (
             <span>{data.description}</span>
           )}
         </p>
         <div className="card-actions justify-between items-center">
-          {data?.userEmail && (
+          {data?.userEmail ? (
             <div className="flex justify-start gap-2 items-center">
               <img
                 src={data.userThumb}
                 className="rounded-full h-12 w-12 ring ring-primary ring-offset-2"
-                alt=""
+                alt="Products Thumbnail"
               />
               <div>
                 <div className="flex justify-start gap-2 items-center">
@@ -62,6 +62,8 @@ const SingleProduct = ({ data }) => {
                 </div>
               </div>
             </div>
+          ) : (
+            <div></div>
           )}
           <button
             onClick={() => navigate(`/products/${data._id}`)}
