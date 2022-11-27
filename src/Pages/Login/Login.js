@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
 import { FcGoogle } from "react-icons/fc";
@@ -5,7 +6,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
 
 const Login = () => {
-  const { handleUserLogin } = useContext(AuthContext);
+  const { handleUserLogin, handleGoogleLogin } = useContext(AuthContext);
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
@@ -37,6 +38,24 @@ const Login = () => {
             console.log(data);
             localStorage.setItem("merchantry-token", data?.token);
             navigate(from, { replace: true });
+          });
+      })
+      .catch((err) => console.log(err));
+  };
+  const handleSocialLogin = () => {
+    handleGoogleLogin()
+      .then((result) => {
+        console.log(result.user);
+        axios
+          .post("/http://localhost:8000/jwt", {
+            headers: {
+              authorisation: `bearer ${localStorage.getItem(
+                "merchantry-token"
+              )}`,
+            },
+          })
+          .then((res) => {
+            localStorage.setItem("merchantry-token", res.data.token);
           });
       })
       .catch((err) => console.log(err));
@@ -94,12 +113,12 @@ const Login = () => {
           <div className="form-control mt-6">
             <input type="submit" className="btn btn-primary" value="Login" />
           </div>
-          <div className="form-control mt-7">
-            <button className="btn btn-primary">
-              Login With Google <FcGoogle className="ml-2" />{" "}
-            </button>
-          </div>
         </form>
+        <div className="form-control mt-7">
+          <button onClick={handleSocialLogin} className="btn btn-primary">
+            Login With Google <FcGoogle className="ml-2" />{" "}
+          </button>
+        </div>
       </div>
     </div>
   );

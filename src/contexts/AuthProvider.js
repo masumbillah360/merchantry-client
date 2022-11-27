@@ -1,6 +1,7 @@
 import {
   createUserWithEmailAndPassword,
   getAuth,
+  GoogleAuthProvider,
   onAuthStateChanged,
   signInWithEmailAndPassword,
   signInWithPopup,
@@ -27,8 +28,9 @@ const AuthProvider = ({ children }) => {
     return () => unsubscribe();
   }, []);
 
-  const handleGoogleLogin = (provider) => {
+  const handleGoogleLogin = () => {
     setLoading(true);
+    const provider = new GoogleAuthProvider();
     return signInWithPopup(auth, provider);
   };
   const handleUserLogin = (email, password) => {
