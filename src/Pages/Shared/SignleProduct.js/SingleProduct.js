@@ -8,7 +8,7 @@ const SingleProduct = ({ data }) => {
     <div className="card card-compact  bg-base-100 shadow-md border">
       <figure>
         <img
-          className="p-2 w-full max-h-80 rounded-2xl"
+          className="p-2 w-full h-80 rounded-2xl"
           src={data.thumbnail}
           alt="Product Thumbnail"
         />
