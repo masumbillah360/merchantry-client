@@ -40,7 +40,7 @@ const OrderHistoryRow = ({ order, refetch }) => {
         >
           Del
         </button>
-        <button className="btn  btn-primary btn-xs">Paid</button>
+        <button className="btn  btn-primary btn-xs btn-disabled">Paid</button>
       </th>
     </tr>
   );

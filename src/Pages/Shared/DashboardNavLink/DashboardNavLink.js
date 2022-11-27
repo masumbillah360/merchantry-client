@@ -97,7 +97,7 @@ const DashboardNavLink = () => {
     </>
   );
   return (
-    <div className="h-[60px]  z-50 sticky top-0 bg-base-200 flex items-center">
+    <div className="h-[60px]  z-40 sticky top-0 bg-base-200 flex items-center">
       <ul class="flex border-b w-full">{navLink}</ul>
     </div>
   );

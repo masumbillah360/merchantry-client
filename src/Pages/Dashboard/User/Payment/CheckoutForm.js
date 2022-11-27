@@ -5,11 +5,14 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({ bookingData }) => {
+  console.log(bookingData);
   const [cardError, setCardError] = useState(null);
   const [clientSecrete, setClientSecrete] = useState("");
   const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
+
+  console.log(clientSecrete);
   useEffect(() => {
     fetch("http://localhost:8000/create-payment-intent", {
       method: "POST",
@@ -20,7 +23,8 @@ const CheckoutForm = ({ bookingData }) => {
       body: JSON.stringify(bookingData),
     })
       .then((res) => res.json())
-      .then((data) => setClientSecrete(data.clientSecret));
+      .then((data) => setClientSecrete(data.clientSecret))
+      .catch((err) => console.log(err));
   }, [bookingData]);
   const handleSubmit = async (event) => {
     event.preventDefault();

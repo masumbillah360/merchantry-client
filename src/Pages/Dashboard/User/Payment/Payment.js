@@ -7,6 +7,7 @@ import CheckoutForm from "./CheckoutForm";
 
 const Payment = () => {
   const bookingData = useLoaderData();
+  console.log(bookingData);
   const { user } = useContext(AuthContext);
   const stripePromise = loadStripe(process.env.REACT_APP_stripeKey);
   return (
@@ -17,11 +18,11 @@ const Payment = () => {
             Payment for <span className="text-info">{bookingData?.name}</span>
           </h1>
           <h4 className="text-primary font-bold text-xl">
-            Price : {bookingData?.price}
+            Price : {bookingData?.presentPrice}
           </h4>
           <h4>Email : {user?.email}</h4>
           <h4>Name : {user?.displayName}</h4>
-          <h4>Location : {bookingData?.userLocation}</h4>
+          <h4>Delivery from : {bookingData?.location}</h4>
         </div>
         <div className="my-10 max-w-md mx-auto">
           <CheckoutForm bookingData={bookingData} />
