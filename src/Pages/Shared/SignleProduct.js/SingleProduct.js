@@ -3,6 +3,7 @@ import { GoVerified } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 
 const SingleProduct = ({ data }) => {
+  console.log(data);
   const navigate = useNavigate();
   return (
     <div className="card card-compact  bg-base-100 shadow-md border">
@@ -16,25 +17,23 @@ const SingleProduct = ({ data }) => {
       <div className="card-body">
         <div className="grid grid-cols-1">
           <span className="font-bold text-primary text-2xl">
-            Present Price : {data.presentPrice}
+            Present Price : {data.presentPrice} $
           </span>
           <span className="font-bold text-red-700 line-through">
-            Original Price : {data.originalPrice}
+            Original Price : {data.originalPrice} $
           </span>
         </div>
-        <h2 className="text-xl font-bold text-center md:text-start">
-          {data.name}
-        </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <h2 className="text-xl font-bold ">{data.name}</h2>
+        <div className="grid grid-cols-2">
           <h2 className="font-bold">Brand : {data.brand}</h2>
-          <span>Used Of Year : {data.usedOfYear}</span>
+          <span>Used Of Year : {data.usedOfYear} y</span>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="grid grid-cols-2">
           <span>Purchase Date:{data.purchaseDate}</span>
           <span>Condition : {data.condition}</span>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2">
+        <div className="grid grid-cols-2">
           <span>Location : {data.location}</span>
           <span>Date :{data.postDate}</span>
         </div>
@@ -45,22 +44,21 @@ const SingleProduct = ({ data }) => {
             <span>{data.description}</span>
           )}
         </p>
-        <div className="card-actions justify-between items-center">
+        <div className="card-actions gap-4 md:gap-0 justify-between items-center">
           {data?.userEmail ? (
-            <div className="flex justify-start gap-2 items-center">
+            <div className="flex justify-start items-center">
               <img
                 src={data.userThumb}
                 className="rounded-full h-12 w-12 ring ring-primary ring-offset-2"
                 alt="Products Thumbnail"
               />
-              <div>
-                <div className="flex justify-start gap-2 items-center">
-                  <h1 className="text-lg font-bold">{data?.name}</h1>
-                  {data.verify}
-                  <span>
-                    <GoVerified className="text-primary" />
-                  </span>
-                </div>
+
+              <div className="flex ml-3 justify-start items-center">
+                <h1 className="text-lg font-bold">{data?.userName}</h1>
+                {data.verify}
+                <span>
+                  <GoVerified className="text-primary ml-1" />
+                </span>
               </div>
             </div>
           ) : (
