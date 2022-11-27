@@ -3,7 +3,6 @@ import { GoVerified } from "react-icons/go";
 import { useNavigate } from "react-router-dom";
 
 const SingleProduct = ({ data }) => {
-  console.log(data);
   const navigate = useNavigate();
   return (
     <div className="card card-compact  bg-base-100 shadow-md border">

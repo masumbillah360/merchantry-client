@@ -4,7 +4,6 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 const WishlisthRow = ({ order, refetch }) => {
-  console.log(order);
   const handleDelete = (id) => {
     console.log(id);
     axios
