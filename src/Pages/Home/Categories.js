@@ -16,21 +16,24 @@ const Categories = () => {
     return <Spinner />;
   }
   return (
-    <div className="grid grid-cols-1 md:grid-cols-3 gap-7">
-      {categories.map((category) => (
-        <Link
-          key={category._id}
-          to={`/category/${category.cat_id}`}
-          className="card border shadow-md bg-slate-100"
-        >
-          <div className="card-body items-center text-center">
-            <img src={category?.thumbnail} alt="" className="h-14" />
-            <h2 className="card-title">{category.brand}</h2>
-            <p>Find Your Favorite used apply </p>
-          </div>
-        </Link>
-      ))}
-    </div>
+    <>
+      <h1 className="text-lg font-bold ">Choose Category</h1>
+      <div id="cateogries" className="grid grid-cols-1 md:grid-cols-3 gap-7">
+        {categories.map((category) => (
+          <Link
+            key={category._id}
+            to={`/category/${category.cat_id}`}
+            className="card border shadow-md bg-slate-100"
+          >
+            <div className="card-body items-center text-center">
+              <img src={category?.thumbnail} alt="" className="h-14" />
+              <h2 className="card-title">{category.brand}</h2>
+              <p>Find Your Favorite used apply </p>
+            </div>
+          </Link>
+        ))}
+      </div>
+    </>
   );
 };
 

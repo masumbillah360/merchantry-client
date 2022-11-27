@@ -26,14 +26,14 @@ const Banner = () => {
                 <Button>Let's Start</Button>
               </Link>
               <a
-                class="inline-flex items-center rounded border-2 border-[#55acee] bg-[#55acee] px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-transparent hover:text-[#55acee] focus:outline-none focus:ring active:opacity-75"
+                className="inline-flex items-center rounded border-2 border-[#55acee] bg-[#55acee] px-5 py-3 text-sm font-medium text-white transition-colors hover:bg-transparent hover:text-[#55acee] focus:outline-none focus:ring active:opacity-75"
                 href="/twitter"
                 target="_blank"
                 rel="noreferrer"
               >
                 Twitter
                 <svg
-                  class="ml-2 h-5 w-5"
+                  className="ml-2 h-5 w-5"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
