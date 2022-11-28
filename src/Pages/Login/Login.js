@@ -47,7 +47,7 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         axios
-          .post("/http://localhost:8000/jwt", {
+          .post("http://localhost:8000/jwt", {
             headers: {
               authorisation: `bearer ${localStorage.getItem(
                 "merchantry-token"
@@ -56,12 +56,21 @@ const Login = () => {
           })
           .then((res) => {
             localStorage.setItem("merchantry-token", res.data.token);
+            const userInfo = {
+              name: result?.user?.displayName,
+              email: result?.user?.email,
+              status: "seller",
+            };
+            axios
+              .post("http://localhost:8000/users", userInfo)
+              .then((response) => console.log(response))
+              .catch((err) => console.log(err));
           });
       })
       .catch((err) => console.log(err));
   };
   return (
-    <div className="grid grid-cols-2">
+    <div className="mt-7 grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-7 justify-center items-center">
       <div className="text-center lg:text-left">
         <h1 className="text-5xl font-bold text-center text-primary">
           Merchentry

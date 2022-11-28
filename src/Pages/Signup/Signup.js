@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
@@ -64,7 +65,7 @@ const Signup = () => {
       .then((result) => {
         console.log(result.user);
         axios
-          .post("/http://localhost:8000/jwt", {
+          .post("http://localhost:8000/jwt", {
             headers: {
               authorisation: `bearer ${localStorage.getItem(
                 "merchantry-token"
@@ -73,13 +74,25 @@ const Signup = () => {
           })
           .then((res) => {
             localStorage.setItem("merchantry-token", res.data.token);
+            const userInfo = {
+              name: result?.user?.displayName,
+              email: result?.user?.email,
+              status: "seller",
+            };
+            axios
+              .post("http://localhost:8000/users", userInfo)
+              .then((response) => {
+                console.log(response);
+                toast.success("login Successfully Done.");
+              })
+              .catch((err) => console.log(err));
           });
       })
       .catch((err) => console.log(err));
   };
   return (
-    <div className="grid grid-cols-1 md:grid-cols-2 gap-7 items-center">
-      <div className="text-center lg:text-end">
+    <div className="mt-7 grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-7 items-center justify-center">
+      <div className="text-center">
         <h4>Create Account on</h4>
         <h1 className="text-5xl font-bold text-primary">Merchentry</h1>
         <p className="py-0 overline font-bold">Buy & Sell E-commerce!!</p>
