@@ -20,6 +20,7 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Login/Login";
 import Signup from "../Pages/Signup/Signup";
+import AdminRoute from "./AdminRoute";
 import PrivateRoute from "./PrivateRoute";
 
 const router = createBrowserRouter([
@@ -71,9 +72,30 @@ const router = createBrowserRouter([
       { path: "/dashboard/mywishlist", element: <MyWishlist /> },
       { path: "/dashboard/myorders", element: <MyOrders /> },
       { path: "/dashboard/orderhistory", element: <UsersOrderHistory /> },
-      { path: "/dashboard/allseller", element: <AllSeller /> },
-      { path: "/dashboard/allusers", element: <AllUsers /> },
-      { path: "/dashboard/reporteditem", element: <ReportedItem /> },
+      {
+        path: "/dashboard/allseller",
+        element: (
+          <AdminRoute>
+            <AllSeller />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/allusers",
+        element: (
+          <AdminRoute>
+            <AllUsers />
+          </AdminRoute>
+        ),
+      },
+      {
+        path: "/dashboard/reporteditem",
+        element: (
+          <AdminRoute>
+            <ReportedItem />
+          </AdminRoute>
+        ),
+      },
       {
         path: "/dashboard/payment/:id",
         element: <Payment />,

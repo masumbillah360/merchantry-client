@@ -61,7 +61,7 @@ const Navbar = () => {
             {navLink}
           </ul>
         </div>
-        <Link to="/" className="btn btn-ghost uppercase text-xl">
+        <Link to="/" className="btn btn-ghost w-48 uppercase text-xl">
           <img className="w-full h-full" src="footer-img.png" alt="" />
         </Link>
       </div>

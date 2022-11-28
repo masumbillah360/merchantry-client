@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../contexts/AuthProvider";
 import Spinner from "../../../Shared/Spinner/Spinner";
@@ -29,8 +30,12 @@ const AddProducts = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-
+  console.log(usersInfo);
   const handleAddProduct = (data) => {
+    if (!usersInfo.status === "seller") {
+      toast.error("You are not a seller");
+      navigate("/login");
+    }
     console.log(data);
     const formData = new FormData();
     formData.append("image", data.image[0]);
@@ -87,6 +92,7 @@ const AddProducts = () => {
       })
       .catch((err) => console.log(err));
   };
+
   if (isLoading) {
     return <Spinner />;
   }

@@ -77,7 +77,7 @@ const Signup = () => {
             const userInfo = {
               name: result?.user?.displayName,
               email: result?.user?.email,
-              status: "seller",
+              status: "buyer",
             };
             axios
               .post("http://localhost:8000/users", userInfo)
