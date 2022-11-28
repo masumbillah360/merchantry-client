@@ -8,7 +8,7 @@ const AdvertisedProducts = () => {
   useEffect(() => {
     axios
       .get("http://localhost:8000/advertised-products")
-      .then((res) => setAdvertisedData(res.data));
+      .then((res) => setAdvertisedData(res?.data));
   }, []);
   return (
     <div>

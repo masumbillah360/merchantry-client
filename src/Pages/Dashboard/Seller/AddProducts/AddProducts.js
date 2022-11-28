@@ -115,12 +115,12 @@ const AddProducts = () => {
               <div className="flex flex-col md:flex-row gap-4">
                 <div className="form-control w-full">
                   <label className="label">
-                    <span className="label-text">Price</span>
+                    <span className="label-text">Resale Price</span>
                   </label>
                   <input
                     required
                     type="text"
-                    placeholder="Price"
+                    placeholder="Resale Price"
                     {...register("price", {
                       required: "Enter Product Price",
                     })}
@@ -135,7 +135,7 @@ const AddProducts = () => {
                   <input
                     required
                     type="text"
-                    placeholder="Price"
+                    placeholder="Original Price"
                     {...register("originalPrice", {
                       required: "Enter Product Price",
                     })}

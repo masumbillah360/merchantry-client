@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import React from "react";
 import SingleProduct from "../Shared/SignleProduct.js/SingleProduct";
+import Spinner from "../Shared/Spinner/Spinner";
 
 const HomeProducts = () => {
   const { data: homeData = [], isLoading } = useQuery({
@@ -12,9 +13,7 @@ const HomeProducts = () => {
     },
   });
   if (isLoading) {
-    return (
-      <h1 className="text-enter font-bold text-red-500 text-9xl">Loading</h1>
-    );
+    return <Spinner />;
   }
   return (
     <div>

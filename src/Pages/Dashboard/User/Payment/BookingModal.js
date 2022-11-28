@@ -1,8 +1,10 @@
 import axios from "axios";
 import React from "react";
+import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const BookingModal = ({ bookingData, setBookingData }) => {
+  console.log(bookingData);
   const navigate = useNavigate();
   const handleBooking = (e) => {
     e.preventDefault();
@@ -26,6 +28,7 @@ const BookingModal = ({ bookingData, setBookingData }) => {
       .then((res) => {
         console.log(res);
         setBookingData(null);
+        toast.success("Booking successfully Added");
         navigate("/dashboard/myorders");
       })
       .catch((err) => console.log(err));

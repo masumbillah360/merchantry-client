@@ -76,9 +76,10 @@ const CheckoutForm = ({ bookingData }) => {
             style: {
               base: {
                 fontSize: "16px",
-                color: "#424770",
+                border: "solid",
+                color: "#00020f",
                 "::placeholder": {
-                  color: "#aab7c4",
+                  color: "#5c5c5e",
                 },
               },
               invalid: {

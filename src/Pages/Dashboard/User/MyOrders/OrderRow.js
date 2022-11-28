@@ -4,6 +4,7 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 const OrderRow = ({ order, refetch }) => {
+  console.log(order);
   const handleDelete = (id) => {
     axios
       .delete(`http://localhost:8000/booking/${id}`, {
@@ -39,7 +40,7 @@ const OrderRow = ({ order, refetch }) => {
           Del
         </button>
         <Link
-          to={`/dashboard/payment/${order.productId}`}
+          to={`/dashboard/payment/${order?.productId}`}
           className={`btn btn-primary btn-xs ${
             order?.status ? "btn-disabled" : ""
           }`}
