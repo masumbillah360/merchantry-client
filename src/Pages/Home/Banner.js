@@ -20,9 +20,12 @@ const Banner = () => {
   ];
   return (
     <div className="md:mb-10 mt-7">
-      <Carousel>
-        {bannerItems.map((bannerItem) => (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-7 justify-center items-center">
+      <Carousel showArrows={true} showThumbs={false}>
+        {bannerItems.map((bannerItem, idx) => (
+          <div
+            className="grid grid-cols-1 md:grid-cols-2 gap-7 justify-center items-center"
+            key={idx}
+          >
             <div className="text-center md:text-end order-2 md:order-1">
               <p className=" font-bold text-primary">Trusted</p>
               <h2 className="text-3xl font-bold">
@@ -33,9 +36,9 @@ const Banner = () => {
                 accusantium doloremque laudantium, totam rem aperiam, eaque ipsa
                 quae. explicabo.
               </p>
-              <div className="flex items-center justify-center md:justify-end my-4 mb-10 md:mb-0">
+              <div className="flex items-center justify-center md:justify-end my-4 mb-10 lg:mb-0">
                 <Link
-                  class="inline-block rounded border border-indigo-600 bg-indigo-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
+                  className="inline-block rounded border border-indigo-600 bg-indigo-600 px-12 py-3 text-sm font-medium text-white hover:bg-transparent hover:text-indigo-600 focus:outline-none focus:ring active:text-indigo-500"
                   to="/"
                 >
                   Let's Start
