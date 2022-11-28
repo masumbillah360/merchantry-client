@@ -7,7 +7,7 @@ const WishlisthRow = ({ order, refetch }) => {
   const handleDelete = (id) => {
     console.log(id);
     axios
-      .delete(`http://localhost:8000/wishlist/${id}`, {
+      .delete(`https://merchantry-server.vercel.app/wishlist/${id}`, {
         headers: {
           authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
         },

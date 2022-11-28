@@ -49,13 +49,13 @@ const router = createBrowserRouter([
         path: "/products/:id",
         element: <ProductDetails />,
         loader: ({ params }) =>
-          fetch(`http://localhost:8000/products/${params.id}`),
+          fetch(`https://merchantry-server.vercel.app/products/${params.id}`),
       },
       {
         path: "/category/:id",
         element: <CategoryPage />,
         loader: ({ params }) =>
-          fetch(`http://localhost:8000/categories/${params.id}`),
+          fetch(`https://merchantry-server.vercel.app/categories/${params.id}`),
       },
     ],
   },
@@ -100,13 +100,16 @@ const router = createBrowserRouter([
         path: "/dashboard/payment/:id",
         element: <Payment />,
         loader: ({ params }) =>
-          fetch(`http://localhost:8000/buy-product/${params.id}`, {
-            headers: {
-              authorisation: `bearer ${localStorage.getItem(
-                "merchantry-token"
-              )}`,
-            },
-          }),
+          fetch(
+            `https://merchantry-server.vercel.app/buy-product/${params.id}`,
+            {
+              headers: {
+                authorisation: `bearer ${localStorage.getItem(
+                  "merchantry-token"
+                )}`,
+              },
+            }
+          ),
       },
       { path: "/dashboard/addproduct", element: <AddProducts /> },
       { path: "/dashboard/myproducts", element: <MyProducts /> },

@@ -28,7 +28,7 @@ const BookingModal = ({ setBookingData, data }) => {
       userEmail: user?.email,
     };
     axios
-      .post("http://localhost:8000/booking", bookingInfo, {
+      .post("https://merchantry-server.vercel.app/booking", bookingInfo, {
         headers: {
           authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
         },

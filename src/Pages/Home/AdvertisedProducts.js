@@ -7,7 +7,7 @@ const AdvertisedProducts = () => {
   console.log(addvertisedData);
   useEffect(() => {
     axios
-      .get("http://localhost:8000/advertised-products")
+      .get("https://merchantry-server.vercel.app/advertised-products")
       .then((res) => setAdvertisedData(res?.data));
   }, []);
   return (

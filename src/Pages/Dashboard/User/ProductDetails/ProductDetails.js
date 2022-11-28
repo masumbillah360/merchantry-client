@@ -19,7 +19,7 @@ const ProductDetails = () => {
   };
   const handleWishlist = () => {
     console.log(bookingInfo);
-    fetch("http://localhost:8000/wishlist", {
+    fetch("https://merchantry-server.vercel.app/wishlist", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -25,7 +25,7 @@ const Login = () => {
         const currentUser = {
           email: user?.email,
         };
-        fetch("http://localhost:8000/jwt", {
+        fetch("https://merchantry-server.vercel.app/jwt", {
           method: "POST",
           headers: {
             "content-type": "application/json",
@@ -47,7 +47,7 @@ const Login = () => {
       .then((result) => {
         console.log(result.user);
         axios
-          .post("http://localhost:8000/jwt", {
+          .post("https://merchantry-server.vercel.app/jwt", {
             headers: {
               authorisation: `bearer ${localStorage.getItem(
                 "merchantry-token"
@@ -62,7 +62,7 @@ const Login = () => {
               status: "buyer",
             };
             axios
-              .post("http://localhost:8000/users", userInfo)
+              .post("https://merchantry-server.vercel.app/users", userInfo)
               .then((response) => console.log(response))
               .catch((err) => console.log(err));
           });

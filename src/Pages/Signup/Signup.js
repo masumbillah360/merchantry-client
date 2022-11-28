@@ -44,7 +44,7 @@ const Signup = () => {
                   status: data.userStatus,
                 };
                 axios
-                  .post("http://localhost:8000/jwt", {
+                  .post("https://merchantry-server.vercel.app/jwt", {
                     headers: {
                       authorisation: `bearer ${localStorage.getItem(
                         "merchantry-token"
@@ -55,7 +55,10 @@ const Signup = () => {
                     localStorage.setItem("merchantry-token", res.data.token);
 
                     axios
-                      .post("http://localhost:8000/users", userInfo)
+                      .post(
+                        "https://merchantry-server.vercel.app/users",
+                        userInfo
+                      )
                       .then((res) => {
                         console.log(res);
                         navigate("/");
@@ -76,7 +79,7 @@ const Signup = () => {
       .then((result) => {
         console.log(result.user);
         axios
-          .post("http://localhost:8000/jwt", {
+          .post("https://merchantry-server.vercel.app/jwt", {
             headers: {
               authorisation: `bearer ${localStorage.getItem(
                 "merchantry-token"
@@ -91,7 +94,7 @@ const Signup = () => {
               status: "buyer",
             };
             axios
-              .post("http://localhost:8000/users", userInfo)
+              .post("https://merchantry-server.vercel.app/users", userInfo)
               .then((response) => console.log(response))
               .catch((err) => console.log(err));
           });

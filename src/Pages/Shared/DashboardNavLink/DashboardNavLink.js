@@ -9,7 +9,7 @@ const DashboardNavLink = () => {
   const [userCategory, setUserCategory] = useState("");
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/users/${email}`, {
+      .get(`https://merchantry-server.vercel.app/users/${email}`, {
         headers: {
           authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
         },

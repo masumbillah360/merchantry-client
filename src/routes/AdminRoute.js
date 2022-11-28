@@ -12,7 +12,7 @@ const AdminRoute = ({ children }) => {
   const email = user?.email;
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/users/${email}`, {
+      .get(`https://merchantry-server.vercel.app/users/${email}`, {
         headers: {
           authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
         },

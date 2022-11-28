@@ -13,7 +13,7 @@ const DashboardProfile = () => {
   console.log(userVerifyStatus);
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/users/${email}`, {
+      .get(`https://merchantry-server.vercel.app/users/${email}`, {
         headers: {
           authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
         },
@@ -35,7 +35,7 @@ const DashboardProfile = () => {
       toast.success("Your Request has been Pending");
       return;
     }
-    fetch(`http://localhost:8000/users?email=${email}`, {
+    fetch(`https://merchantry-server.vercel.app/users?email=${email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

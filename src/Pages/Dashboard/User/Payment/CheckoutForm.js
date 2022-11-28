@@ -13,7 +13,7 @@ const CheckoutForm = ({ paymentData }) => {
 
   console.log(clientSecrete);
   useEffect(() => {
-    fetch("http://localhost:8000/create-payment-intent", {
+    fetch("https://merchantry-server.vercel.app/create-payment-intent", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -45,7 +45,7 @@ const CheckoutForm = ({ paymentData }) => {
       console.log(paymentMethod);
       paymentData.transactionId = clientSecrete;
       axios
-        .post(`http://localhost:8000/payments`, paymentData, {
+        .post(`https://merchantry-server.vercel.app/payments`, paymentData, {
           headers: {
             authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
           },

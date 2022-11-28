@@ -7,7 +7,7 @@ const OrderRow = ({ order, refetch }) => {
   console.log(order);
   const handleDelete = (id) => {
     axios
-      .delete(`http://localhost:8000/booking/${id}`, {
+      .delete(`https://merchantry-server.vercel.app/booking/${id}`, {
         headers: {
           authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
         },

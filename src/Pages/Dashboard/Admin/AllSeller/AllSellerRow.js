@@ -9,7 +9,7 @@ const AllSellerRow = ({ userInfo, refetch }) => {
       verify: true,
     };
 
-    fetch(`http://localhost:8000/users?email=${email}`, {
+    fetch(`https://merchantry-server.vercel.app/users?email=${email}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",
@@ -31,7 +31,7 @@ const AllSellerRow = ({ userInfo, refetch }) => {
   };
   const handleDeleteUser = (id) => {
     axios
-      .delete(`http://localhost:8000/users/${id}`, {
+      .delete(`https://merchantry-server.vercel.app/users/${id}`, {
         headers: {
           authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
         },

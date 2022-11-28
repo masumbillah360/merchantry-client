@@ -7,7 +7,7 @@ const HomeProducts = () => {
   const { data: homeData = [], isLoading } = useQuery({
     queryKey: ["homeData"],
     queryFn: async () => {
-      const res = await fetch("http://localhost:8000/products");
+      const res = await fetch("https://merchantry-server.vercel.app/products");
       const data = await res.json();
       return data;
     },

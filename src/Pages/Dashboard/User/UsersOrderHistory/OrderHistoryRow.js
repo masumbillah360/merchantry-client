@@ -6,11 +6,14 @@ const OrderHistoryRow = ({ order, refetch }) => {
   const handleDelete = (transactionId) => {
     console.log(transactionId);
     axios
-      .delete(`http://localhost:8000/payments/${transactionId}`, {
-        headers: {
-          authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
-        },
-      })
+      .delete(
+        `https://merchantry-server.vercel.app/payments/${transactionId}`,
+        {
+          headers: {
+            authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
+          },
+        }
+      )
       .then((data) => {
         toast.success("Successfylly deleted");
         console.log(data);

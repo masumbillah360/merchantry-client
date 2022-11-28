@@ -21,7 +21,7 @@ const Payment = () => {
   const [buyersInfo, setBuyersInfo] = useState(null);
   useEffect(() => {
     axios
-      .get(`http://localhost:8000/booking/${bookingData._id}`, {
+      .get(`https://merchantry-server.vercel.app/booking/${bookingData._id}`, {
         headers: {
           authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
         },

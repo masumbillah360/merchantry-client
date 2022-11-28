@@ -14,11 +14,14 @@ const MyOrders = () => {
   } = useQuery({
     queryKey: ["allOrders"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:8000/booking?email=${email}`, {
-        headers: {
-          authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
-        },
-      });
+      const res = await fetch(
+        `https://merchantry-server.vercel.app/booking?email=${email}`,
+        {
+          headers: {
+            authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
+          },
+        }
+      );
       const data = await res.json();
       return data;
     },

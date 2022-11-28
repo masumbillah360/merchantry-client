@@ -5,7 +5,7 @@ const EachProducts = ({ product, refetch }) => {
   console.log(product);
   const handleDeleteProduct = (id) => {
     axios
-      .delete(`http://localhost:8000/sellers-product/${id}`, {
+      .delete(`https://merchantry-server.vercel.app/sellers-product/${id}`, {
         headers: {
           authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
         },
@@ -20,7 +20,7 @@ const EachProducts = ({ product, refetch }) => {
     const advertisedInfo = {
       advertised: true,
     };
-    fetch(`http://localhost:8000/advertised-products?id=${id}`, {
+    fetch(`https://merchantry-server.vercel.app/advertised-products?id=${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

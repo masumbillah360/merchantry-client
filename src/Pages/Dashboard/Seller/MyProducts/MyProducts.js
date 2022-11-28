@@ -15,7 +15,7 @@ const MyProducts = () => {
     queryKey: ["myProducts"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:8000/sellers-product?email=${email}`,
+        `https://merchantry-server.vercel.app/sellers-product?email=${email}`,
         {
           headers: {
             authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,

@@ -14,7 +14,7 @@ const MyWishlist = () => {
     queryKey: ["allWishlist"],
     queryFn: async () => {
       const res = await fetch(
-        `http://localhost:8000/wishlist?email=${user?.email}`,
+        `https://merchantry-server.vercel.app/wishlist?email=${user?.email}`,
         {
           headers: {
             authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
