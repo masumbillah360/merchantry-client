@@ -1,23 +1,31 @@
 import axios from "axios";
-import React from "react";
+import React, { useContext } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../../contexts/AuthProvider";
 
-const BookingModal = ({ bookingData, setBookingData }) => {
-  console.log(bookingData);
+const BookingModal = ({ setBookingData, data }) => {
+  console.log(data);
+  const { user } = useContext(AuthContext);
+  console.log(user);
   const navigate = useNavigate();
   const handleBooking = (e) => {
+    if (!user?.uid) {
+      toast.error("Please login before booking");
+      navigate("/login");
+      return;
+    }
     e.preventDefault();
     const bookingInfo = {
       phone: e.target.phone.value,
       location: e.target.location.value,
-      productId: bookingData?.productId,
-      thumbnail: bookingData?.thumbnail,
-      price: bookingData?.price,
-      name: bookingData?.name,
-      brand: bookingData?.brand,
-      userName: bookingData?.userName,
-      userEmail: bookingData?.userEmail,
+      productId: data?._id,
+      thumbnail: data?.thumbnail,
+      price: data?.presentPrice,
+      name: data?.name,
+      brand: data?.brand,
+      userName: user?.displayName,
+      userEmail: user?.email,
     };
     axios
       .post("http://localhost:8000/booking", bookingInfo, {
@@ -38,22 +46,22 @@ const BookingModal = ({ bookingData, setBookingData }) => {
       <input type="checkbox" id="bookingModal" className="modal-toggle" />
       <div className="modal">
         <div className="modal-box md:w-full relative">
-          <h3 className="text-lg font-bold">{bookingData?.name}</h3>
+          <h3 className="text-lg font-bold">{data?.name}</h3>
           <form onSubmit={handleBooking} className="grid grid-cols-1 gap-3">
             <input
-              defaultValue={"Price : " + bookingData?.price + " $"}
+              defaultValue={"Price : " + data?.presentPrice + " $"}
               readOnly
               type="text"
               className="input input-bordered w-full"
             />
             <input
-              defaultValue={bookingData?.userEmail}
+              defaultValue={user?.email}
               type="text"
               readOnly
               className="input input-bordered w-full"
             />
             <input
-              defaultValue={bookingData?.userName}
+              defaultValue={user?.displayName}
               type="text"
               readOnly
               className="input input-bordered w-full"
