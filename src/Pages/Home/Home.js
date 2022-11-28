@@ -3,6 +3,7 @@ import AdvertisedProducts from "./AdvertisedProducts";
 import Banner from "./Banner";
 import Categories from "./Categories";
 import HomeProducts from "./HomeProducts";
+import SupportPage from "./SupportPage";
 
 const Home = () => {
   return (
@@ -16,6 +17,7 @@ const Home = () => {
         All Products for You!!!
       </h1>
       <HomeProducts />
+      <SupportPage />
     </div>
   );
 };
