@@ -1,9 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../../../../contexts/AuthProvider";
 import Spinner from "../../../Shared/Spinner/Spinner";
 import WishlistRow from "./WishlistRow";
 
 const MyWishlist = () => {
+  const { user } = useContext(AuthContext);
   const {
     data: allWishlist = [],
     isLoading,
@@ -11,15 +13,19 @@ const MyWishlist = () => {
   } = useQuery({
     queryKey: ["allWishlist"],
     queryFn: async () => {
-      const res = await fetch(`http://localhost:8000/wishlist`, {
-        headers: {
-          authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
-        },
-      });
+      const res = await fetch(
+        `http://localhost:8000/wishlist?email=${user?.email}`,
+        {
+          headers: {
+            authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
+          },
+        }
+      );
       const data = await res.json();
       return data;
     },
   });
+  console.log(allWishlist);
   if (isLoading) {
     return <Spinner />;
   }

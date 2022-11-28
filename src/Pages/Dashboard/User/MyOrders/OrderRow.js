@@ -42,7 +42,7 @@ const OrderRow = ({ order, refetch }) => {
         <Link
           to={`/dashboard/payment/${order?.productId}`}
           className={`btn btn-primary btn-xs ${
-            order?.status ? "btn-disabled" : ""
+            order?.paid ? "btn-disabled" : ""
           }`}
         >
           {order.status ? "Paid" : "Pay"}

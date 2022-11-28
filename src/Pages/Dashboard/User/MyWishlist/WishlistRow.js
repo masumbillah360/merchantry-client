@@ -18,6 +18,9 @@ const WishlisthRow = ({ order, refetch }) => {
       })
       .catch((err) => console.log(err));
   };
+  const handlePaidProducts = () => {
+    toast.success("Already Paid");
+  };
   return (
     <tr className="hover">
       <td>
@@ -40,12 +43,21 @@ const WishlisthRow = ({ order, refetch }) => {
         >
           Del
         </button>
-        <Link
-          to={`/dashboard/payment/${order.productId}`}
-          className="btn btn-primary btn-xs"
-        >
-          Pay
-        </Link>
+        {order.paid ? (
+          <button
+            onClick={handlePaidProducts}
+            className="btn btn-success btn-xs"
+          >
+            Paid
+          </button>
+        ) : (
+          <Link
+            to={`/dashboard/payment/${order.productId}`}
+            className="btn btn-primary btn-xs"
+          >
+            Pay
+          </Link>
+        )}
       </th>
     </tr>
   );

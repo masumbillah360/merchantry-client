@@ -9,13 +9,13 @@ const ProductDetails = () => {
   const data = useLoaderData();
   const [bookingData, setBookingData] = useState(null);
   const bookingInfo = {
-    productId: data._id,
-    userEmail: user?.email,
+    productId: data?._id,
+    thumbnail: data?.thumbnail,
+    price: data?.presentPrice,
+    name: data?.name,
+    brand: data?.brand,
     userName: user?.displayName,
-    thumbnail: data.thumbnail,
-    price: data.presentPrice,
-    name: data.name,
-    brand: data.brand,
+    userEmail: user?.email,
   };
   const handleWishlist = () => {
     console.log(bookingInfo);

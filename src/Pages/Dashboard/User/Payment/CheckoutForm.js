@@ -4,8 +4,7 @@ import React, { useEffect, useState } from "react";
 import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
-const CheckoutForm = ({ bookingData }) => {
-  console.log(bookingData);
+const CheckoutForm = ({ paymentData }) => {
   const [cardError, setCardError] = useState(null);
   const [clientSecrete, setClientSecrete] = useState("");
   const navigate = useNavigate();
@@ -20,12 +19,12 @@ const CheckoutForm = ({ bookingData }) => {
         "content-type": "application/json",
         authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
       },
-      body: JSON.stringify(bookingData),
+      body: JSON.stringify(paymentData),
     })
       .then((res) => res.json())
       .then((data) => setClientSecrete(data.clientSecret))
       .catch((err) => console.log(err));
-  }, [bookingData]);
+  }, [paymentData]);
   const handleSubmit = async (event) => {
     event.preventDefault();
     if (!stripe || !elements) {
@@ -44,24 +43,14 @@ const CheckoutForm = ({ bookingData }) => {
       setCardError(error);
     } else {
       console.log(paymentMethod);
-      bookingData.transactionId = clientSecrete;
+      paymentData.transactionId = clientSecrete;
       axios
-        .post("http://localhost:8000/payments", bookingData, {
+        .post(`http://localhost:8000/payments`, paymentData, {
           headers: {
             authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
           },
         })
         .then((res) => {
-          axios
-            .put(`http://localhost:8000/booking/${bookingData._id}`, {
-              headers: {
-                authorisation: `bearer ${localStorage.getItem(
-                  "merchantry-token"
-                )}`,
-              },
-            })
-            .then((res) => console.log(res))
-            .catch((err) => console.log(err));
           toast.success("Successfully Paid");
           navigate("/dashboard/myorders");
         })

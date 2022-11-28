@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
-import toast from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
@@ -45,14 +44,26 @@ const Signup = () => {
                   status: data.userStatus,
                 };
                 axios
-                  .post("http://localhost:8000/users", userInfo)
-                  .then((res) => {
-                    console.log(res);
-                    navigate("/");
-                    setLoading(false);
-                    window.location.reload();
+                  .post("http://localhost:8000/jwt", {
+                    headers: {
+                      authorisation: `bearer ${localStorage.getItem(
+                        "merchantry-token"
+                      )}`,
+                    },
                   })
-                  .catch((err) => console.log(err));
+                  .then((res) => {
+                    localStorage.setItem("merchantry-token", res.data.token);
+
+                    axios
+                      .post("http://localhost:8000/users", userInfo)
+                      .then((res) => {
+                        console.log(res);
+                        navigate("/");
+                        setLoading(false);
+                        window.location.reload();
+                      })
+                      .catch((err) => console.log(err));
+                  });
               })
               .catch((err) => console.log(err));
           })
@@ -81,10 +92,7 @@ const Signup = () => {
             };
             axios
               .post("http://localhost:8000/users", userInfo)
-              .then((response) => {
-                console.log(response);
-                toast.success("login Successfully Done.");
-              })
+              .then((response) => console.log(response))
               .catch((err) => console.log(err));
           });
       })

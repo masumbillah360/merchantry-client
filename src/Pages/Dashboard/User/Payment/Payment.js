@@ -8,6 +8,13 @@ import CheckoutForm from "./CheckoutForm";
 
 const Payment = () => {
   const bookingData = useLoaderData();
+  const { location, name, _id, presentPrice } = bookingData;
+  const paymentData = {
+    productId: _id,
+    name,
+    location,
+    presentPrice,
+  };
   console.log(bookingData);
   const { user } = useContext(AuthContext);
   const stripePromise = loadStripe(process.env.REACT_APP_stripeKey);
@@ -25,7 +32,7 @@ const Payment = () => {
     <Elements stripe={stripePromise}>
       <div>
         <div className="mt-7 max-w-md mx-auto rounded-t-lg shadow-lg">
-          <CheckoutForm bookingData={bookingData} />
+          <CheckoutForm paymentData={paymentData} />
         </div>
         <div className="">
           <div className="card max-w-md bg-base-100 shadow-lg mx-auto rounded-b-lg rounded-t-none">
