@@ -84,7 +84,11 @@ const BookingModal = ({ setBookingData, data }) => {
               <label htmlFor="bookingModal" className="btn">
                 Cancel
               </label>
-              <button type="submit" htmlFor="bookingModal" className="btn">
+              <button
+                type="submit"
+                htmlFor="bookingModal"
+                className="btn btn-primary"
+              >
                 Booking Now
               </button>
             </div>

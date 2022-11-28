@@ -77,7 +77,7 @@ const DashboardNavLink = () => {
           <li className="flex-1  text-center">
             <NavLink className="relative block p-4" to="/dashboard/myorders">
               <span className="ml-3 text-sm font-medium text-gray-900">
-                My Orders
+                My Booking
               </span>
             </NavLink>
           </li>
