@@ -70,7 +70,7 @@ const CheckoutForm = ({ bookingData }) => {
   };
   return (
     <div className="">
-      <form onSubmit={handleSubmit} className="border p-5 rounded-lg">
+      <form onSubmit={handleSubmit} className="border p-5 rounded-t-lg">
         <CardElement
           options={{
             style: {

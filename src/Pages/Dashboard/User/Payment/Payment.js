@@ -24,8 +24,11 @@ const Payment = () => {
   return (
     <Elements stripe={stripePromise}>
       <div>
-        <div className="mb-10">
-          <div className="card max-w-md bg-base-100 shadow-lg mx-auto">
+        <div className="mt-7 max-w-md mx-auto rounded-t-lg shadow-lg">
+          <CheckoutForm bookingData={bookingData} />
+        </div>
+        <div className="">
+          <div className="card max-w-md bg-base-100 shadow-lg mx-auto rounded-b-lg rounded-t-none">
             <div className="card-body">
               <h1 className="text-xl ">
                 Payment for
@@ -43,9 +46,6 @@ const Payment = () => {
               <h4>Delivery to : {buyersInfo?.location}</h4>
             </div>
           </div>
-        </div>
-        <div className="my-10 max-w-md mx-auto shadow-lg">
-          <CheckoutForm bookingData={bookingData} />
         </div>
       </div>
     </Elements>
