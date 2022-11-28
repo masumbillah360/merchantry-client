@@ -1,4 +1,5 @@
 import React from "react";
+import About from "./About";
 import AdvertisedProducts from "./AdvertisedProducts";
 import Banner from "./Banner";
 import Categories from "./Categories";
@@ -18,6 +19,7 @@ const Home = () => {
       </h1>
       <HomeProducts />
       <SupportPage />
+      <About />
     </div>
   );
 };
