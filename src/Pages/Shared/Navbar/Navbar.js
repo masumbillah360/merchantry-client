@@ -62,7 +62,7 @@ const Navbar = () => {
           </ul>
         </div>
         <Link to="/" className="btn btn-ghost uppercase text-xl">
-          Marchentry
+          <img className="w-full h-full" src="footer-img.png" alt="" />
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
