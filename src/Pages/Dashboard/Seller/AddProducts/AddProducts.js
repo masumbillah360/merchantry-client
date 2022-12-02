@@ -38,11 +38,10 @@ const AddProducts = () => {
     if (!usersInfo.status === "seller") {
       toast.error("You are not a seller");
       navigate("/login");
+      return;
     }
-    console.log(data);
     const formData = new FormData();
     formData.append("image", data.image[0]);
-    console.log(formData);
     setLoading(true);
     fetch(
       `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_imgbbKey}`,
@@ -74,7 +73,6 @@ const AddProducts = () => {
           usedOfYear: data.usedYears,
           postDate: time,
         };
-        console.log(productsInfo);
         axios
           .post(
             "https://merchantry-server.vercel.app/sellers-product",
@@ -88,12 +86,10 @@ const AddProducts = () => {
             }
           )
           .then((res) => {
-            console.log(res);
             navigate("/dashboard/myproducts");
             setLoading(false);
           })
           .catch((err) => {
-            console.log(err);
             setLoading(false);
           });
       })
@@ -125,7 +121,7 @@ const AddProducts = () => {
 
           <div className="flex flex-col md:flex-row flex-wrap justify-between gap-4">
             <div className="grid grid-cols-1 md:grid-cols-2 justify-between gap-3 w-full">
-              <div className="flex flex-col md:flex-row gap-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="form-control w-full">
                   <label className="label">
                     <span className="label-text">Resale Price</span>

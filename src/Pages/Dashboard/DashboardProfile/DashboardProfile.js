@@ -4,12 +4,14 @@ import toast from "react-hot-toast";
 
 import { GoUnverified, GoVerified } from "react-icons/go";
 import { AuthContext } from "../../../contexts/AuthProvider";
+import Spinner from "../../Shared/Spinner/Spinner";
 
 const DashboardProfile = () => {
   const { user } = useContext(AuthContext);
   const email = user?.email;
   const [usersInfo, setUsersInfo] = useState(null);
   const [userVerifyStatus, setUserVerifyStatus] = useState("");
+  const [userLoading, setUserLoading] = useState(true);
   console.log(userVerifyStatus);
   useEffect(() => {
     axios
@@ -22,6 +24,7 @@ const DashboardProfile = () => {
         console.log(res);
         setUsersInfo(res?.data);
         setUserVerifyStatus(res?.data?.verifyStatus);
+        setUserLoading(false);
       })
       .catch((err) => console.log(err));
   }, [email, userVerifyStatus]);
@@ -55,6 +58,9 @@ const DashboardProfile = () => {
   const handleSuccessToast = () => {
     toast.success("You Are Already Verified");
   };
+  if (userLoading) {
+    return <Spinner />;
+  }
   return (
     <div>
       <div className="card full max-w-md mx-auto bg-base-100 shadow-xl">

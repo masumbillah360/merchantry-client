@@ -8,6 +8,8 @@ import Spinner from "../Pages/Shared/Spinner/Spinner";
 const AdminRoute = ({ children }) => {
   const { user, loading } = useContext(AuthContext);
   const [userCategory, setUserCategory] = useState("");
+  const [adminLoader, setAdminLoader] = useState(true);
+
   const location = useLocation();
   const email = user?.email;
   useEffect(() => {
@@ -17,9 +19,12 @@ const AdminRoute = ({ children }) => {
           authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
         },
       })
-      .then((res) => setUserCategory(res?.data?.status));
-  }, [email]);
-  if (loading) {
+      .then((res) => {
+        setUserCategory(res.data.status);
+        setAdminLoader(false);
+      });
+  }, [email, userCategory]);
+  if (adminLoader) {
     return <Spinner />;
   }
   if (userCategory === "admin") {

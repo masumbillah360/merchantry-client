@@ -5,7 +5,6 @@ import { AuthContext } from "../../../contexts/AuthProvider";
 
 const Navbar = () => {
   const { user, handleLogOut } = useContext(AuthContext);
-  console.log(user);
   const navLink = (
     <>
       <li>
@@ -76,28 +75,24 @@ const Navbar = () => {
               <img src={user?.photoURL} alt="" />
             </div>
           </label>
-          <ul
-            tabIndex={0}
-            className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
-          >
-            <li>
-              <Link to="/" className="justify-between">
-                {user?.displayName}
-              </Link>
-            </li>
-            <li>
-              <Link to="/">Dashboard</Link>
-            </li>
-            <li>
-              <Link to="/">Orders</Link>
-            </li>
-            <li>
-              <Link to="/">Booking</Link>
-            </li>
-            <li>
-              <button onClick={handleLogOut}>Log Out</button>
-            </li>
-          </ul>
+          {user?.uid && (
+            <ul
+              tabIndex={0}
+              className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+            >
+              <li>
+                <Link to="/dashboard" className="justify-between">
+                  {user?.displayName}
+                </Link>
+              </li>
+              <li>
+                <Link to="/dashboard">Dashboard</Link>
+              </li>
+              <li>
+                <button onClick={handleLogOut}>Log Out</button>
+              </li>
+            </ul>
+          )}
         </div>
       </div>
     </div>

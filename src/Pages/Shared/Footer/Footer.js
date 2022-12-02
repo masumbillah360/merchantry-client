@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import logo from "../../../assets/logo.png";
 
 const Footer = () => {
   return (
     <footer className="footer footer-center rounded-xl mt-10 p-10 bg-slate-600 text-primary-content">
       <div>
-        <img src="footer-img.png" alt="" className="rounded-2xl h-14" />
+        <img src={logo} alt="" className="rounded-2xl h-14" />
         <p className="font-bold text-lg">providing buy and sell web services</p>
         <p>Copyright © 2022 - All right reserved</p>
       </div>
