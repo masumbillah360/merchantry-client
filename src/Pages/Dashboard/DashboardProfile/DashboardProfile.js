@@ -9,6 +9,7 @@ import Spinner from "../../Shared/Spinner/Spinner";
 const DashboardProfile = () => {
   const { user } = useContext(AuthContext);
   const email = user?.email;
+  console.log(email, "email");
   const [usersInfo, setUsersInfo] = useState(null);
   const [userVerifyStatus, setUserVerifyStatus] = useState("");
   const [userLoading, setUserLoading] = useState(true);

@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({ paymentData }) => {
+  console.log(paymentData);
   const [cardError, setCardError] = useState(null);
   const [clientSecrete, setClientSecrete] = useState("");
   const navigate = useNavigate();
@@ -51,7 +52,18 @@ const CheckoutForm = ({ paymentData }) => {
           },
         })
         .then((res) => {
+          fetch(`http://localhost:8000/booking/${paymentData.productId}`, {
+            method: "PUT",
+            headers: {
+              authorisation: `bearer ${localStorage.getItem(
+                "merchantry-token"
+              )}`,
+            },
+          })
+            .then((res) => console.log(res))
+            .catch((err) => console.log(err));
           toast.success("Successfully Paid");
+
           navigate("/dashboard/myorders");
         })
         .catch((err) => console.log(err));
