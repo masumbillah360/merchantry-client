@@ -6,7 +6,7 @@ import { AuthContext } from "../contexts/AuthProvider";
 import Spinner from "../Pages/Shared/Spinner/Spinner";
 
 const AdminRoute = ({ children }) => {
-  const { user, loading } = useContext(AuthContext);
+  const { user } = useContext(AuthContext);
   const [userCategory, setUserCategory] = useState("");
   const [adminLoader, setAdminLoader] = useState(true);
 

@@ -48,14 +48,17 @@ const CheckoutForm = ({ paymentData }) => {
           },
         })
         .then((res) => {
-          fetch(`http://localhost:8000/booking/${paymentData.productId}`, {
-            method: "PUT",
-            headers: {
-              authorisation: `bearer ${localStorage.getItem(
-                "merchantry-token"
-              )}`,
-            },
-          })
+          fetch(
+            `https://merchantry-server.vercel.app/${paymentData.productId}`,
+            {
+              method: "PUT",
+              headers: {
+                authorisation: `bearer ${localStorage.getItem(
+                  "merchantry-token"
+                )}`,
+              },
+            }
+          )
             .then((res) => console.log(res))
             .catch((err) => console.log(err));
           toast.success("Successfully Paid");
