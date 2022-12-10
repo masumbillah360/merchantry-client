@@ -5,14 +5,11 @@ import toast from "react-hot-toast";
 import { useNavigate } from "react-router-dom";
 
 const CheckoutForm = ({ paymentData }) => {
-  console.log(paymentData);
   const [cardError, setCardError] = useState(null);
   const [clientSecrete, setClientSecrete] = useState("");
   const navigate = useNavigate();
   const stripe = useStripe();
   const elements = useElements();
-
-  console.log(clientSecrete);
   useEffect(() => {
     fetch("https://merchantry-server.vercel.app/create-payment-intent", {
       method: "POST",
@@ -40,7 +37,6 @@ const CheckoutForm = ({ paymentData }) => {
       card,
     });
     if (error) {
-      console.log("[error]", error);
       setCardError(error);
     } else {
       console.log(paymentMethod);

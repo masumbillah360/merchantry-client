@@ -9,11 +9,9 @@ import Spinner from "../../Shared/Spinner/Spinner";
 const DashboardProfile = () => {
   const { user } = useContext(AuthContext);
   const email = user?.email;
-  console.log(email, "email");
   const [usersInfo, setUsersInfo] = useState(null);
   const [userVerifyStatus, setUserVerifyStatus] = useState("");
   const [userLoading, setUserLoading] = useState(true);
-  console.log(userVerifyStatus);
   useEffect(() => {
     axios
       .get(`https://merchantry-server.vercel.app/users/${email}`, {
@@ -22,7 +20,6 @@ const DashboardProfile = () => {
         },
       })
       .then((res) => {
-        console.log(res);
         setUsersInfo(res?.data);
         setUserVerifyStatus(res?.data?.verifyStatus);
         setUserLoading(false);
@@ -31,7 +28,6 @@ const DashboardProfile = () => {
   }, [email, userVerifyStatus]);
 
   const handleVerify = (email) => {
-    console.log(email);
     const userStatus = {
       verifyStatus: "Pending",
     };
@@ -48,7 +44,6 @@ const DashboardProfile = () => {
       body: JSON.stringify(userStatus),
     })
       .then((res) => {
-        console.log(res);
         if (res.ok) {
           toast.success("Your Request Has Pending, Please Wait");
           setUserVerifyStatus("Pending");

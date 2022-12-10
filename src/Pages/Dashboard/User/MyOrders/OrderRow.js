@@ -4,7 +4,6 @@ import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
 
 const OrderRow = ({ order, refetch }) => {
-  console.log(order);
   const handleDelete = (id) => {
     axios
       .delete(`https://merchantry-server.vercel.app/booking/${id}`, {

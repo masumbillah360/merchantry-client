@@ -10,7 +10,7 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state?.from?.pathname || "/";
-  console.log(from, "pathName");
+
   const {
     register,
     handleSubmit,
@@ -18,7 +18,6 @@ const Login = () => {
   } = useForm();
 
   const handleSignIn = (data) => {
-    console.log(data);
     handleUserLogin(data.email, data.password)
       .then((result) => {
         const user = result?.user;
@@ -35,7 +34,6 @@ const Login = () => {
         })
           .then((res) => res.json())
           .then((data) => {
-            console.log(data);
             localStorage.setItem("merchantry-token", data?.token);
             navigate(from, { replace: true });
           });
@@ -45,7 +43,6 @@ const Login = () => {
   const handleSocialLogin = () => {
     handleGoogleLogin()
       .then((result) => {
-        console.log(result.user);
         axios
           .post("https://merchantry-server.vercel.app/jwt", {
             headers: {
@@ -63,7 +60,7 @@ const Login = () => {
             };
             axios
               .post("https://merchantry-server.vercel.app/users", userInfo)
-              .then((response) => console.log(response))
+              .then((response) => {})
               .catch((err) => console.log(err));
           });
       })

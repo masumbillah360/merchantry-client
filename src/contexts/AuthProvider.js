@@ -46,7 +46,6 @@ const AuthProvider = ({ children }) => {
       displayName: name,
       photoURL: image,
     };
-    console.log(profile);
     return updateProfile(auth.currentUser, profile);
   };
   const handleLogOut = () => {

@@ -4,7 +4,6 @@ import toast from "react-hot-toast";
 
 const OrderHistoryRow = ({ order, refetch }) => {
   const handleDelete = (transactionId) => {
-    console.log(transactionId);
     axios
       .delete(
         `https://merchantry-server.vercel.app/payments/${transactionId}`,
@@ -16,7 +15,7 @@ const OrderHistoryRow = ({ order, refetch }) => {
       )
       .then((data) => {
         toast.success("Successfylly deleted");
-        console.log(data);
+
         refetch();
       })
       .catch((err) => console.log(err));

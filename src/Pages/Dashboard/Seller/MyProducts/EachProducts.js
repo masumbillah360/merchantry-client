@@ -2,7 +2,6 @@ import axios from "axios";
 import React from "react";
 
 const EachProducts = ({ product, refetch }) => {
-  console.log(product);
   const handleDeleteProduct = (id) => {
     axios
       .delete(`https://merchantry-server.vercel.app/sellers-product/${id}`, {
@@ -11,7 +10,6 @@ const EachProducts = ({ product, refetch }) => {
         },
       })
       .then((res) => {
-        console.log(res);
         refetch();
       })
       .catch((err) => console.log(err));
@@ -30,7 +28,6 @@ const EachProducts = ({ product, refetch }) => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         refetch();
       })
       .catch((err) => console.log(err));

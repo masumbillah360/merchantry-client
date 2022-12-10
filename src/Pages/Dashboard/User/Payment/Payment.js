@@ -15,7 +15,6 @@ const Payment = () => {
     location,
     presentPrice,
   };
-  console.log(bookingData);
   const { user } = useContext(AuthContext);
   const stripePromise = loadStripe(process.env.REACT_APP_stripeKey);
   const [buyersInfo, setBuyersInfo] = useState(null);

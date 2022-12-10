@@ -7,7 +7,7 @@ const DashboardNavLink = () => {
   const { user } = useContext(AuthContext);
   const email = user?.email;
   const [userCategory, setUserCategory] = useState("");
-  console.log(userCategory);
+
   useEffect(() => {
     axios
       .get(`https://merchantry-server.vercel.app/users/${email}`, {

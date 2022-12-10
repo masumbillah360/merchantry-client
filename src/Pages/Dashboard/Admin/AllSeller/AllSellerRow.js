@@ -18,7 +18,6 @@ const AllSellerRow = ({ userInfo, refetch }) => {
       body: JSON.stringify(userStatus),
     })
       .then((res) => {
-        console.log(res);
         if (res.ok) {
           toast.success("Successfully Verified");
           refetch();

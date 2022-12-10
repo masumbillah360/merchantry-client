@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 
 const WishlisthRow = ({ order, refetch }) => {
   const handleDelete = (id) => {
-    console.log(id);
     axios
       .delete(`https://merchantry-server.vercel.app/wishlist/${id}`, {
         headers: {

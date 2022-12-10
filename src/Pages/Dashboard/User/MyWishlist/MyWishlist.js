@@ -25,7 +25,6 @@ const MyWishlist = () => {
       return data;
     },
   });
-  console.log(allWishlist);
   if (isLoading) {
     return <Spinner />;
   }

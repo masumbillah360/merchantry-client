@@ -5,9 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../../contexts/AuthProvider";
 
 const BookingModal = ({ setBookingData, data }) => {
-  console.log(data);
   const { user } = useContext(AuthContext);
-  console.log(user);
   const navigate = useNavigate();
   const handleBooking = (e) => {
     if (!user?.uid) {
@@ -34,7 +32,6 @@ const BookingModal = ({ setBookingData, data }) => {
         },
       })
       .then((res) => {
-        console.log(res);
         setBookingData(null);
         toast.success("Booking successfully Added");
         navigate("/dashboard/myorders");

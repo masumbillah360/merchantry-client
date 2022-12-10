@@ -18,7 +18,6 @@ const ProductDetails = () => {
     userEmail: user?.email,
   };
   const handleWishlist = () => {
-    console.log(bookingInfo);
     fetch("https://merchantry-server.vercel.app/wishlist", {
       method: "POST",
       headers: {
@@ -29,7 +28,6 @@ const ProductDetails = () => {
     })
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         toast.success("Successfully Added");
       })
       .catch((err) => console.log(err));

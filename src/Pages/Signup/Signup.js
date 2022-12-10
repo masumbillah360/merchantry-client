@@ -18,10 +18,9 @@ const Signup = () => {
   } = useForm();
 
   const handleSignIn = (data) => {
-    console.log(data);
     const formData = new FormData();
     formData.append("image", data.image[0]);
-    console.log(formData);
+
     setLoading(true);
     fetch(
       `https://api.imgbb.com/1/upload?key=${process.env.REACT_APP_imgbbKey}`,
@@ -32,7 +31,6 @@ const Signup = () => {
     )
       .then((res) => res.json())
       .then((image) => {
-        console.log(image);
         handleCreateuser(data.email, data.password)
           .then((result) => {
             handleUpdateUser(data.name, image.data.url)
@@ -60,7 +58,6 @@ const Signup = () => {
                         userInfo
                       )
                       .then((res) => {
-                        console.log(res);
                         navigate("/");
                         setLoading(false);
                         window.location.reload();
@@ -77,7 +74,6 @@ const Signup = () => {
   const handleSocialLogin = () => {
     handleGoogleLogin()
       .then((result) => {
-        console.log(result.user);
         axios
           .post("https://merchantry-server.vercel.app/jwt", {
             headers: {
@@ -95,7 +91,7 @@ const Signup = () => {
             };
             axios
               .post("https://merchantry-server.vercel.app/users", userInfo)
-              .then((response) => console.log(response))
+              .then((response) => {})
               .catch((err) => console.log(err));
           });
       })

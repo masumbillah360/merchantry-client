@@ -4,7 +4,6 @@ import SingleProduct from "../Shared/SignleProduct.js/SingleProduct";
 
 const AdvertisedProducts = () => {
   const [addvertisedData, setAdvertisedData] = useState([]);
-  console.log(addvertisedData);
   useEffect(() => {
     axios
       .get("https://merchantry-server.vercel.app/advertised-products")

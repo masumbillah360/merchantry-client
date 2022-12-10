@@ -26,7 +26,6 @@ const UsersOrderHistory = () => {
       return data;
     },
   });
-  console.log(allHistoryOrder, "history");
   if (isLoading) {
     return <Spinner />;
   }
