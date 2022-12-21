@@ -33,7 +33,6 @@ const AddProducts = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  console.log(usersInfo);
   const handleAddProduct = (data) => {
     if (!usersInfo.status === "seller") {
       toast.error("You are not a seller");
@@ -52,7 +51,6 @@ const AddProducts = () => {
     )
       .then((res) => res.json())
       .then((image) => {
-        console.log(image?.data?.url);
         setLoading(false);
         const time = new Date().toDateString();
         const productsInfo = {
