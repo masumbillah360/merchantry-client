@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useContext, useState } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
@@ -67,9 +68,14 @@ const Signup = () => {
               })
               .catch((err) => console.log(err));
           })
-          .catch((err) => console.log(err));
+          .catch((err) => {
+            console.log(err);
+            toast.error(err.message);
+          });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        toast.error(err.message);
+      });
   };
   const handleSocialLogin = () => {
     handleGoogleLogin()
@@ -91,11 +97,13 @@ const Signup = () => {
             };
             axios
               .post("https://merchantry-server.vercel.app/users", userInfo)
-              .then((response) => {})
-              .catch((err) => console.log(err));
+              .then((response) => {
+                toast.success("Successfully created your account");
+              })
+              .catch((err) => toast.error(err.message));
           });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => toast.error(err.message));
   };
   return (
     <div className="mt-7 grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-7 items-center justify-center">
@@ -112,7 +120,6 @@ const Signup = () => {
               <span className="label-text">Full Name</span>
             </label>
             <input
-              required
               type="text"
               {...register("name", {
                 required: "Enter Your Full Name",
@@ -122,7 +129,16 @@ const Signup = () => {
               placeholder="Full Name"
               className="input input-bordered"
             />
-            {errors.name && <span>{errors.name.message}</span>}
+            {errors.name && (
+              <span className="text-red-500">{errors.name.message}</span>
+            )}
+
+            {errors.name?.type === "minLength" && (
+              <span className="text-red-500">Min Length is minimum 4</span>
+            )}
+            {errors.name?.type === "maxLength" && (
+              <span className="text-red-500">Max length exceeded</span>
+            )}
           </div>
 
           <div className="form-control">
@@ -176,12 +192,20 @@ const Signup = () => {
               type="password"
               {...register("password", {
                 required: "Select a strong password",
+                minLength: 8,
+                maxLength: 14,
               })}
               autoComplete="Password"
               placeholder="password"
               className="input input-bordered"
             />
             {errors.password && <span>{errors.password.message}</span>}
+            {errors.password?.type === "maxLength" && (
+              <span className="text-red-500">Min Length is 6 charecter</span>
+            )}
+            {errors.password?.type === "maxLength" && (
+              <span className="text-red-500">Max length exceeded</span>
+            )}
             <label className="label">
               <Link to="/login" className="label-text-alt link link-hover">
                 Already have an account ?

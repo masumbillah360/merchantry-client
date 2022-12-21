@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useContext } from "react";
 import { useForm } from "react-hook-form";
+import { toast } from "react-hot-toast";
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../contexts/AuthProvider";
@@ -14,6 +15,7 @@ const Login = () => {
   const {
     register,
     handleSubmit,
+    resetField,
     formState: { errors },
   } = useForm();
 
@@ -38,7 +40,11 @@ const Login = () => {
             navigate(from, { replace: true });
           });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        toast.error(err.message);
+        resetField("email");
+        resetField("password");
+      });
   };
   const handleSocialLogin = () => {
     handleGoogleLogin()
@@ -64,7 +70,9 @@ const Login = () => {
               .catch((err) => console.log(err));
           });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        toast.error(err.message);
+      });
   };
   return (
     <div className="mt-7 grid grid-cols-1 md:grid-cols-2 gap-0 md:gap-7 justify-center items-center">
@@ -86,6 +94,7 @@ const Login = () => {
             <input
               required
               type="email"
+              id="email"
               placeholder="email"
               {...register("email", {
                 required: "Enter Your Valied Email Address",
