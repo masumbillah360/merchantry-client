@@ -14,14 +14,11 @@ const MyOrders = () => {
   } = useQuery({
     queryKey: ["allOrders"],
     queryFn: async () => {
-      const res = await fetch(
-        `https://merchantry-server.vercel.app/booking?email=${email}`,
-        {
-          headers: {
-            authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
-          },
-        }
-      );
+      const res = await fetch(`http://localhost:8000/booking?email=${email}`, {
+        headers: {
+          authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
+        },
+      });
       const data = await res.json();
       return data;
     },
@@ -41,7 +38,7 @@ const MyOrders = () => {
           </tr>
         </thead>
         <tbody>
-          {allOrders.map((order) => (
+          {allOrders.reverse().map((order) => (
             <OrderRow key={order._id} order={order} refetch={refetch} />
           ))}
         </tbody>

@@ -7,6 +7,7 @@ const DashboardNavLink = () => {
   const { user } = useContext(AuthContext);
   const email = user?.email;
   const [userCategory, setUserCategory] = useState("");
+  console.log(userCategory);
 
   useEffect(() => {
     axios
@@ -15,7 +16,9 @@ const DashboardNavLink = () => {
           authorisation: `bearer ${localStorage.getItem("merchantry-token")}`,
         },
       })
-      .then((res) => setUserCategory(res?.data?.status));
+      .then((res) => {
+        setUserCategory(res?.data?.status);
+      });
   }, [email]);
   const navLink = (
     <>
