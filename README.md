@@ -6,6 +6,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## admin Email & Password
+-admin@gm.com
+-pass: adminadmin
 ## Available Feature
 
 - Easy user/seller account creation.
